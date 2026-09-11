@@ -337,7 +337,7 @@
         let toastTimer = null;
 
         const KEY_PART_1 = "AQ.Ab8RN6L6rp"; 
-        const KEY_PART_2 = "PASTE_THE_REST_OF_YOUR_KEY_HERE"; 
+        const KEY_PART_2 = "YgzF7rJMvH49oXTAw24WUeQd_orpRJXjYY27xmXA"; 
         const API_KEY = KEY_PART_1 + KEY_PART_2;
 
         const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]));
@@ -435,7 +435,7 @@
             try {
                 const systemPrompt = `${activeLens.system}\nThe user's real-world scenario/plan is: "${idea}"\n\nRespond ONLY in valid JSON format with three exact keys: "angle1", "angle2", and "angle3". Keep answers highly insightful, pragmatic, and under 3 sentences each.\n\n{\n  "angle1": "${activeLens.a1.prompt}",\n  "angle2": "${activeLens.a2.prompt}",\n  "angle3": "${activeLens.a3.prompt}"\n}`;
 
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${API_KEY}`, {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: systemPrompt }] }] })
                 });
