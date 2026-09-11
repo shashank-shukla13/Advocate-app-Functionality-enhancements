@@ -14,37 +14,31 @@
             --fern: #456b5b; --fern-deep: #315245; --clay: #ba7259; --sun: #e5bb71;
             --grad1: rgba(227,187,113,.2); --grad2: rgba(165,184,165,.29); --line: rgba(49, 82, 69, .16);
         }
-        /* Cool Blue & Slate (Agile) */
         [data-theme="agile"] {
             --ink: #1e323b; --ink-soft: #526872; --paper: #f0f4f7; 
             --fern: #3b7080; --fern-deep: #254b54; --clay: #7c736e; --sun: #8ab4c0;
             --grad1: rgba(59,112,128,.15); --grad2: rgba(138,180,192,.2); --line: rgba(59,112,128,.16);
         }
-        /* Warm Earthy Brown (Market) */
         [data-theme="market"] {
             --ink: #382c26; --ink-soft: #705e54; --paper: #f7f4f0; 
             --fern: #8c5e43; --fern-deep: #593b29; --clay: #a65d37; --sun: #d4a373;
             --grad1: rgba(140,94,67,.15); --grad2: rgba(212,163,115,.2); --line: rgba(140,94,67,.16);
         }
-        /* Soft Eucalyptus Green (Medical) */
         [data-theme="medical"] {
             --ink: #243630; --ink-soft: #586e65; --paper: #f1f6f4; 
             --fern: #4a7c66; --fern-deep: #304f41; --clay: #9e6b56; --sun: #94b9a7;
             --grad1: rgba(74,124,102,.15); --grad2: rgba(148,185,167,.2); --line: rgba(74,124,102,.16);
         }
-        /* Deep Forest Moss (Evolution) */
         [data-theme="evolution"] {
             --ink: #303628; --ink-soft: #636b56; --paper: #f4f6f0; 
             --fern: #627042; --fern-deep: #3f472a; --clay: #b06b52; --sun: #c2b280;
             --grad1: rgba(98,112,66,.15); --grad2: rgba(194,178,128,.2); --line: rgba(98,112,66,.16);
         }
-        /* Muted Lavender Blue (Physics) */
         [data-theme="physics"] {
             --ink: #2d2b38; --ink-soft: #605c70; --paper: #f4f3f7; 
             --fern: #685b8a; --fern-deep: #433958; --clay: #a86b72; --sun: #b09ebb;
             --grad1: rgba(104,91,138,.15); --grad2: rgba(176,158,187,.2); --line: rgba(104,91,138,.16);
         }
-        /* Warm Terracotta & Clay (Military) */
         [data-theme="military"] {
             --ink: #382c25; --ink-soft: #6e5e52; --paper: #f7f4f0; 
             --fern: #8c583f; --fern-deep: #593727; --clay: #9e4a32; --sun: #cca07a;
@@ -91,19 +85,24 @@
         h1 { max-width: 430px; margin: 0; color: var(--ink); font-family: "Playfair Display", Georgia, serif; font-size: clamp(43px,5.8vw,76px); font-weight: 500; letter-spacing: -.055em; line-height: .98; }
         h1 em { color: var(--fern); font-style: italic; }
         .intro { max-width: 345px; margin: 27px 0 0; color: var(--ink-soft); font-size: 15px; line-height: 1.65; }
-                .stage-label { margin-bottom: 18px; }
-        .stage-label h2 { margin: 0 0 12px 0; font-size: 13px; font-weight: 600; }
+
+        .stage-label { margin-bottom: 14px; }
+        .stage-label h2 { margin: 0 0 10px 0; font-size: 13px; font-weight: 600; }
         
-        .lens-dropdown-container { margin-bottom: 20px; }
+        .lens-dropdown-container { margin-bottom: 22px; position: relative; }
         .lens-select-glass { 
-            width: 100%; padding: 14px 18px; border: 1px solid var(--line); 
-            border-radius: 16px; background: rgba(255, 255, 255, 0.45); 
-            color: var(--ink); font-family: "DM Mono", monospace; 
-            font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; 
+            width: 100%; padding: 15px 22px; border: 2px solid var(--fern); 
+            border-radius: 999px; background: rgba(255, 255, 255, 0.65); 
+            color: var(--fern-deep); font-family: "DM Mono", monospace; 
+            font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; 
             outline: none; cursor: pointer; backdrop-filter: blur(12px); 
-            -webkit-backdrop-filter: blur(12px); box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            -webkit-backdrop-filter: blur(12px); box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+            appearance: none; -webkit-appearance: none; -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23315245' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat; background-position: right 18px center; background-size: 16px;
+            padding-right: 48px;
         }
-        .lens-select-glass:focus { border-color: var(--fern); box-shadow: 0 0 0 3px var(--grad1); }
+        .lens-select-glass:focus { border-color: var(--fern-deep); box-shadow: 0 0 0 4px var(--grad1); background-color: rgba(255, 255, 255, 0.85); }
 
         .composer { position: relative; padding: 23px 24px 19px; border: 1px solid var(--line); border-radius: 22px 22px 42px 22px; background: rgba(255,255,255,.45); box-shadow: 0 18px 50px rgba(0,0,0,.04); backdrop-filter: blur(12px); }
         .composer::before { content: ""; position: absolute; top: -9px; right: 27px; width: 58px; height: 14px; border-top: 1px solid var(--clay); border-radius: 50%; transform: rotate(-4deg); opacity: 0.7; }
@@ -423,8 +422,7 @@
             document.getElementById('saveBtn').addEventListener('click', saveReflection);
             chatSection.style.display = 'block'; chatHistoryBox.innerHTML = ''; 
         }
-
-        async function debateIdea(rawIdea) {
+                    async function debateIdea(rawIdea) {
             const idea = rawIdea.trim();
             if (!idea) { showToast('Write or speak an idea first.'); return; }
             
@@ -536,7 +534,7 @@
                             ideaInput.value = item.idea;
                             const targetLens = item.lens || MATRIX["default"];
                             lensTrack.value = Object.keys(MATRIX).find(key => MATRIX[key].name === targetLens.name) || "default";
-     currentSelectedLens = lensTrack.value;
+                            currentSelectedLens = lensTrack.value;
                             document.body.setAttribute('data-theme', currentSelectedLens);
                             renderVerdict(item.verdict, targetLens); closeDrawer();
                         });
@@ -550,7 +548,7 @@
                     <div class="history-item"><span>Agile & Systems</span><p>Treats your dilemma like an architecture failure. Finds the technical debt.</p></div>
                     <div class="history-item"><span>Market & Equity</span><p>Treats your problem like a stock portfolio. Finds the sunk cost and stop-loss.</p></div>
                     <div class="history-item"><span>Medical Triage</span><p>Treats your anxiety like a bleeding wound. Finds the immediate tourniquet.</p></div>
-                    <div class="drawer-footer">You stay in charge. The verdict is a mirror, not an instruction.</div>`;
+                    <div class="drawer-footer">You stay in charge. The verdict is a mirror, not an instruction.</div`;
             }
             drawer.querySelector('.drawer-close').addEventListener('click', closeDrawer);
             drawerLayer.appendChild(drawer); drawerLayer.hidden = false; 
@@ -563,7 +561,7 @@
         document.getElementById('newReflectionBtn').addEventListener('click', () => {
             window.speechSynthesis.cancel();
             ideaInput.value = ''; document.getElementById('chatInput').value = ''; conversationHistory = []; currentVerdict = null;
-            emptyVerdict(); voiceStatus.textContent = 'Prefer to speak?'; voiceHint.textContent = 'Tap the button above and let the first version be messy.';
+            emptyVerdict(); voiceStatus.textContent = 'Prefer to speak?'; voiceHint.textContent = 'Tap the button above and let the first version be messy. ';
         });
         document.getElementById('historyBtn').addEventListener('click', () => openDrawer('history'));
         document.getElementById('helpBtn').addEventListener('click', () => openDrawer('help'));
