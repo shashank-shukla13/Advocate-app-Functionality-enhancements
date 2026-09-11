@@ -9,839 +9,185 @@
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap");
         
-        /* Botanical Lively & Relaxing Shifting Palette */
         :root {
-            --ink: #233d36; 
-            --ink-soft: #5d7068; 
-            --paper: #f6f3eb; 
-            --fern: #456b5b; 
-            --fern-deep: #315245; 
-            --clay: #ba7259; 
-            --sun: #e5bb71;
-            --grad1: rgba(227,187,113,.2); 
-            --grad2: rgba(165,184,165,.29); 
-            --line: rgba(49, 82, 69, .16);
+            --ink: #233d36; --ink-soft: #5d7068; --paper: #f6f3eb; 
+            --fern: #456b5b; --fern-deep: #315245; --clay: #ba7259; --sun: #e5bb71;
+            --grad1: rgba(227,187,113,.2); --grad2: rgba(165,184,165,.29); --line: rgba(49, 82, 69, .16);
         }
-
         [data-theme="agile"] {
-            --ink: #1f3830; 
-            --ink-soft: #546a60; 
-            --paper: #f2f7f4; 
-            --fern: #38826c; 
-            --fern-deep: #255748; 
-            --clay: #c47c5d; 
-            --sun: #79a888;
-            --grad1: rgba(56,130,108,.15); 
-            --grad2: rgba(121,168,136,.2); 
-            --line: rgba(56,130,108,.16);
+            --ink: #1e323b; --ink-soft: #526872; --paper: #f0f4f7; 
+            --fern: #3b7080; --fern-deep: #254b54; --clay: #7c736e; --sun: #8ab4c0;
+            --grad1: rgba(59,112,128,.15); --grad2: rgba(138,180,192,.2); --line: rgba(59,112,128,.16);
         }
-
         [data-theme="market"] {
-            --ink: #203628; 
-            --ink-soft: #586b5e; 
-            --paper: #f3f7f2; 
-            --fern: #4a7c59; 
-            --fern-deep: #31523b; 
-            --clay: #b86b52; 
-            --sun: #d4a373;
-            --grad1: rgba(212,163,115,.2); 
-            --grad2: rgba(74,124,89,.2); 
-            --line: rgba(74,124,89,.2);
+            --ink: #382c26; --ink-soft: #705e54; --paper: #f7f4f0; 
+            --fern: #8c5e43; --fern-deep: #593b29; --clay: #a65d37; --sun: #d4a373;
+            --grad1: rgba(140,94,67,.15); --grad2: rgba(212,163,115,.2); --line: rgba(140,94,67,.16);
         }
-
         [data-theme="medical"] {
-            --ink: #253835; 
-            --ink-soft: #5c706c; 
-            --paper: #f0f7f6; 
-            --fern: #438a83; 
-            --fern-deep: #2d5c57; 
-            --clay: #b86252; 
-            --sun: #88b7b2;
-            --grad1: rgba(136,183,178,.2); 
-            --grad2: rgba(67,138,131,.15); 
-            --line: rgba(67,138,131,.2);
+            --ink: #243630; --ink-soft: #586e65; --paper: #f1f6f4; 
+            --fern: #4a7c66; --fern-deep: #304f41; --clay: #9e6b56; --sun: #94b9a7;
+            --grad1: rgba(74,124,102,.15); --grad2: rgba(148,185,167,.2); --line: rgba(74,124,102,.16);
         }
-
         [data-theme="evolution"] {
-            --ink: #333623; 
-            --ink-soft: #676a54; 
-            --paper: #f6f7f0; 
-            --fern: #707e47; 
-            --fern-deep: #4b5430; 
-            --clay: #ba7259; 
-            --sun: #d4a373;
-            --grad1: rgba(112,126,71,.18); 
-            --grad2: rgba(212,163,115,.2); 
-            --line: rgba(112,126,71,.2);
+            --ink: #303628; --ink-soft: #636b56; --paper: #f4f6f0; 
+            --fern: #627042; --fern-deep: #3f472a; --clay: #b06b52; --sun: #c2b280;
+            --grad1: rgba(98,112,66,.15); --grad2: rgba(194,178,128,.2); --line: rgba(98,112,66,.16);
         }
-
         [data-theme="physics"] {
-            --ink: #2c2938; 
-            --ink-soft: #635f73; 
-            --paper: #f5f3f7; 
-            --fern: #69588c; 
-            --fern-deep: #44385e; 
-            --clay: #ba7259; 
-            --sun: #b892b0;
-            --grad1: rgba(105,88,140,.15); 
-            --grad2: rgba(184,146,176,.2); 
-            --line: rgba(105,88,140,.16);
+            --ink: #2d2b38; --ink-soft: #605c70; --paper: #f4f3f7; 
+            --fern: #685b8a; --fern-deep: #433958; --clay: #a86b72; --sun: #b09ebb;
+            --grad1: rgba(104,91,138,.15); --grad2: rgba(176,158,187,.2); --line: rgba(104,91,138,.16);
         }
-
         [data-theme="military"] {
-            --ink: #363228; 
-            --ink-soft: #6a6456; 
-            --paper: #f5f4ef; 
-            --fern: #6e6247; 
-            --fern-deep: #47402f; 
-            --clay: #a65d37; 
-            --sun: #b5a07e;
-            --grad1: rgba(110,98,71,.18); 
-            --grad2: rgba(166,93,55,.15); 
-            --line: rgba(110,98,71,.16);
+            --ink: #382c25; --ink-soft: #6e5e52; --paper: #f7f4f0; 
+            --fern: #8c583f; --fern-deep: #593727; --clay: #9e4a32; --sun: #cca07a;
+            --grad1: rgba(140,88,63,.15); --grad2: rgba(204,160,122,.2); --line: rgba(140,88,63,.16);
         }
 
-        * { 
-            box-sizing: border-box; 
-        }
-
-        body, .app-shell, .composer, .perspective, .lens-tab, textarea, button, h1, h2, h3, p, span {
+        * { box-sizing: border-box; }
+        body, .app-shell, .composer, .perspective, .lens-select-glass, textarea, button, h1, h2, h3, p, span {
             transition: background 0.8s ease, color 0.8s ease, border-color 0.8s ease, box-shadow 0.8s ease;
         }
 
-        html { 
-            background: var(--paper); 
-            scroll-behavior: smooth; 
-        }
-        
-        body { 
-            margin: 0; 
-            min-width: 320px; 
-            color: var(--ink); 
-            background: var(--paper); 
-            font-family: "DM Sans", sans-serif; 
-        }
-
-        button, textarea { 
-            font: inherit; 
-        }
-        
-        button { 
-            -webkit-tap-highlight-color: transparent; 
-        }
+        html { background: var(--paper); scroll-behavior: smooth; height: 100%; overflow-y: auto; }
+        body { margin: 0; min-width: 320px; color: var(--ink); background: var(--paper); font-family: "DM Sans", sans-serif; min-height: 100%; overflow-x: hidden; }
+        button, textarea, select { font: inherit; }
+        button, select { -webkit-tap-highlight-color: transparent; }
         
         .app-shell {
-            min-height: 100vh; 
-            position: relative; 
-            overflow: hidden;
+            min-height: 100vh; position: relative; overflow: visible;
             background: radial-gradient(circle at 11% 8%, var(--grad1), transparent 22rem),
-                        radial-gradient(circle at 91% 76%, var(--grad2), transparent 30rem), 
-                        var(--paper);
+                radial-gradient(circle at 91% 76%, var(--grad2), transparent 30rem), var(--paper);
         }
         
-        .topbar, .main { 
-            position: relative; 
-            z-index: 1; 
-            width: min(1180px, calc(100% - 48px)); 
-            margin: 0 auto; 
-        }
+        .topbar, .main { position: relative; z-index: 1; width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+        .topbar { height: 86px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
         
-        .topbar { 
-            height: 86px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            border-bottom: 1px solid var(--line); 
-        }
-        
-        .brand { 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 11px; 
-            padding: 0; 
-            color: var(--ink); 
-            background: transparent; 
-            letter-spacing: -.02em; 
-            cursor: pointer; 
-            border: 0; 
-        }
-        
-        .brand-word { 
-            font-size: 16px; 
-            font-weight: 700; 
-            text-transform: none; 
-        }
-        
-        .brand-word span { 
-            color: var(--clay); 
-            font-weight: 500; 
-            font-style: italic; 
-        }
-        
-        .mark { 
-            display: grid; 
-            place-items: center; 
-            width: 30px; 
-            height: 30px; 
-            flex: 0 0 auto; 
-            color: var(--fern-deep); 
-            background: rgba(255,255,255,.4); 
-            border: 1px solid var(--line); 
-            border-radius: 12px 5px 12px 5px; 
-            transform: rotate(-9deg); 
-        }
-        
-        .mark svg { 
-            transform: rotate(9deg); 
-        }
+        .brand { display: inline-flex; align-items: center; gap: 11px; padding: 0; color: var(--ink); background: transparent; letter-spacing: -.02em; cursor: pointer; border: 0; }
+        .brand-word { font-size: 16px; font-weight: 700; text-transform: none; }
+        .brand-word span { color: var(--clay); font-weight: 500; font-style: italic; }
+        .mark { display: grid; place-items: center; width: 30px; height: 30px; flex: 0 0 auto; color: var(--fern-deep); background: rgba(255,255,255,.4); border: 1px solid var(--line); border-radius: 12px 5px 12px 5px; transform: rotate(-9deg); }
+        .mark svg { transform: rotate(9deg); }
 
-        .nav-actions { 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-        }
-        
-        .nav-note { 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 8px; 
-            margin-right: 11px; 
-            color: var(--ink-soft); 
-            font-size: 12px; 
-            font-family: "DM Mono", monospace; 
-            text-transform: uppercase; 
-            letter-spacing: .08em; 
-        }
-        
-        .nav-note i { 
-            width: 6px; 
-            height: 6px; 
-            border-radius: 50%; 
-            background: var(--clay); 
-        }
-        
-        .icon-button { 
-            display: grid; 
-            place-items: center; 
-            width: 35px; 
-            height: 35px; 
-            padding: 0; 
-            color: var(--ink-soft); 
-            background: transparent; 
-            border-radius: 50%; 
-            border: 0; 
-            cursor: pointer; 
-            transition: color .18s, background .18s; 
-        }
-        
-        .icon-button:hover { 
-            color: var(--ink); 
-            background: rgba(255,255,255,.4); 
-        }
+        .nav-actions { display: flex; align-items: center; gap: 10px; }
+        .nav-note { display: inline-flex; align-items: center; gap: 8px; margin-right: 11px; color: var(--ink-soft); font-size: 12px; font-family: "DM Mono", monospace; text-transform: uppercase; letter-spacing: .08em; }
+        .nav-note i { width: 6px; height: 6px; border-radius: 50%; background: var(--clay); }
+        .icon-button { display: grid; place-items: center; width: 35px; height: 35px; padding: 0; color: var(--ink-soft); background: transparent; border-radius: 50%; border: 0; cursor: pointer; transition: color .18s, background .18s; }
+        .icon-button:hover { color: var(--ink); background: rgba(255,255,255,.4); }
 
-        .main { 
-            padding: 76px 0 92px; 
-        }
+        .main { padding: 76px 0 120px; overflow: visible; }
+        .grid { display: grid; grid-template-columns: minmax(290px,.78fr) minmax(440px,1.22fr); gap: clamp(58px,8vw,132px); align-items: start; }
         
-        .grid { 
-            display: grid; 
-            grid-template-columns: minmax(290px,.78fr) minmax(440px,1.22fr); 
-            gap: clamp(58px,8vw,132px); 
-            align-items: start; 
-        }
+        .kicker { font-family: "DM Mono", monospace; letter-spacing: .13em; text-transform: uppercase; display: flex; align-items: center; gap: 11px; margin: 0 0 25px; color: var(--fern); font-size: 10px; }
+        .kicker::before { content: ""; width: 23px; height: 1px; background: var(--clay); }
         
-        .kicker { 
-            font-family: "DM Mono", monospace; 
-            letter-spacing: .13em; 
-            text-transform: uppercase; 
-            display: flex; 
-            align-items: center; 
-            gap: 11px; 
-            margin: 0 0 25px; 
-            color: var(--fern); 
-            font-size: 10px; 
-        }
-        
-        .kicker::before { 
-            content: ""; 
-            width: 23px; 
-            height: 1px; 
-            background: var(--clay); 
-        }
-        
-        h1 { 
-            max-width: 430px; 
-            margin: 0; 
-            color: var(--ink); 
-            font-family: "Playfair Display", Georgia, serif; 
-            font-size: clamp(43px,5.8vw,76px); 
-            font-weight: 500; 
-            letter-spacing: -.055em; 
-            line-height: .98; 
-        }
-        
-        h1 em { 
-            color: var(--fern); 
-            font-style: italic; 
-        }
-        
-        .intro { 
-            max-width: 345px; 
-            margin: 27px 0 0; 
-            color: var(--ink-soft); 
-            font-size: 15px; 
-            line-height: 1.65; 
-        }
-                .stage-label { 
-            margin-bottom: 18px; 
-        }
-        
-        .stage-label h2 { 
-            margin: 0 0 12px 0; 
-            font-size: 13px; 
-            font-weight: 600; 
-        }
-        
-        .lens-switch-track { 
-            display: flex; 
-            gap: 4px; 
-            padding: 4px; 
-            overflow-x: auto; 
-            background: rgba(255, 255, 255, 0.35); 
-            border: 1px solid var(--line); 
-            border-radius: 999px; 
-            backdrop-filter: blur(12px); 
-            -webkit-backdrop-filter: blur(12px); 
-            scrollbar-width: none; 
-            margin-bottom: 20px; 
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-        }
-        
-        .lens-switch-track::-webkit-scrollbar { 
-            display: none; 
-        }
-        
-        .lens-tab { 
-            flex: 0 0 auto; 
-            padding: 8px 16px; 
-            border: 0; 
-            border-radius: 999px; 
-            background: transparent; 
-            color: var(--ink-soft); 
-            font-family: "DM Mono", monospace; 
-            font-size: 10px; 
-            letter-spacing: 0.08em; 
-            text-transform: uppercase; 
-            cursor: pointer; 
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
-        }
-        
-        .lens-tab:hover { 
-            color: var(--ink); 
-            background: rgba(255,255,255,0.5); 
-        }
-        
-        .lens-tab.active { 
-            background: var(--fern); 
-            color: #fffaf0; 
-            box-shadow: 0 4px 14px rgba(0,0,0,0.08); 
-            font-weight: 500; 
-        }
+        h1 { max-width: 430px; margin: 0; color: var(--ink); font-family: "Playfair Display", Georgia, serif; font-size: clamp(43px,5.8vw,76px); font-weight: 500; letter-spacing: -.055em; line-height: .98; }
+        h1 em { color: var(--fern); font-style: italic; }
+        .intro { max-width: 345px; margin: 27px 0 0; color: var(--ink-soft); font-size: 15px; line-height: 1.65; }
 
-        .composer { 
-            position: relative; 
-            padding: 23px 24px 19px; 
-            border: 1px solid var(--line); 
-            border-radius: 22px 22px 42px 22px; 
-            background: rgba(255,255,255,.45); 
-            box-shadow: 0 18px 50px rgba(0,0,0,.04); 
-            backdrop-filter: blur(12px); 
-        }
+        .stage-label { margin-bottom: 14px; }
+        .stage-label h2 { margin: 0 0 10px 0; font-size: 13px; font-weight: 600; }
         
-        .composer::before { 
-            content: ""; 
-            position: absolute; 
-            top: -9px; 
-            right: 27px; 
-            width: 58px; 
-            height: 14px; 
-            border-top: 1px solid var(--clay); 
-            border-radius: 50%; 
-            transform: rotate(-4deg); 
-            opacity: 0.7; 
+        .lens-dropdown-container { margin-bottom: 22px; position: relative; }
+        .lens-select-glass { 
+            width: 100%; padding: 15px 22px; border: 2px solid var(--fern); 
+            border-radius: 999px; background: rgba(255, 255, 255, 0.65); 
+            color: var(--fern-deep); font-family: "DM Mono", monospace; 
+            font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; 
+            outline: none; cursor: pointer; backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px); box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+            appearance: none; -webkit-appearance: none; -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23315245' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat; background-position: right 18px center; background-size: 16px;
+            padding-right: 48px;
         }
-        
-        .field-label { 
-            display: block; 
-            margin-bottom: 11px; 
-            font-family: "DM Mono", monospace; 
-            font-size: 10px; 
-            letter-spacing: .08em; 
-            text-transform: uppercase; 
-            color: var(--ink-soft); 
-        }
-        
-        textarea { 
-            display: block; 
-            width: 100%; 
-            min-height: 91px; 
-            resize: vertical; 
-            padding: 0; 
-            border: 0; 
-            color: var(--ink); 
-            outline: 0; 
-            background: transparent; 
-            font-family: "Playfair Display", Georgia, serif; 
-            font-size: 22px; 
-            line-height: 1.32; 
-        }
-        
-        textarea::placeholder { 
-            color: var(--ink-soft); 
-            opacity: 0.5; 
-        }
-        
-        .composer-footer { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            gap: 14px; 
-            margin-top: 17px; 
-            padding-top: 14px; 
-            border-top: 1px solid var(--line); 
-        }
-        
-        .composer-hint { 
-            color: var(--ink-soft); 
-            font-size: 11px; 
-            line-height: 1.35; 
-            font-family: "DM Mono", monospace; 
-        }
+        .lens-select-glass:focus { border-color: var(--fern-deep); box-shadow: 0 0 0 4px var(--grad1); background-color: rgba(255, 255, 255, 0.85); }
 
-        .primary-button { 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 9px; 
-            min-height: 40px; 
-            padding: 0 17px; 
-            color: #fffaf0; 
-            background: var(--fern-deep); 
-            border-radius: 999px; 
-            border: 0; 
-            box-shadow: 0 7px 16px rgba(0,0,0,.15); 
-            font-size: 12px; 
-            font-weight: 600; 
-            cursor: pointer; 
-            transition: transform .18s, filter .18s; 
-        }
+        .composer { position: relative; padding: 23px 24px 19px; border: 1px solid var(--line); border-radius: 22px 22px 42px 22px; background: rgba(255,255,255,.45); box-shadow: 0 18px 50px rgba(0,0,0,.04); backdrop-filter: blur(12px); }
+        .composer::before { content: ""; position: absolute; top: -9px; right: 27px; width: 58px; height: 14px; border-top: 1px solid var(--clay); border-radius: 50%; transform: rotate(-4deg); opacity: 0.7; }
         
-        .primary-button:hover { 
-            filter: brightness(1.1); 
-            transform: translateY(-2px); 
-        }
+        .field-label { display: block; margin-bottom: 11px; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+        textarea { display: block; width: 100%; min-height: 91px; resize: vertical; padding: 0; border: 0; color: var(--ink); outline: 0; background: transparent; font-family: "Playfair Display", Georgia, serif; font-size: 22px; line-height: 1.32; }
+        textarea::placeholder { color: var(--ink-soft); opacity: 0.5; }
         
-        .listening .pulse { 
-            width: 7px; 
-            height: 7px; 
-            border-radius: 50%; 
-            background: var(--sun); 
-            box-shadow: 0 0 0 5px var(--grad1); 
-            animation: pulse 1.45s ease-in-out infinite; 
-        }
-        
-        @keyframes pulse { 
-            0%, 100% { opacity: .5; transform: scale(.8); } 
-            50% { opacity: 1; transform: scale(1.1); } 
-        }
+        .composer-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 17px; padding-top: 14px; border-top: 1px solid var(--line); }
+        .composer-hint { color: var(--ink-soft); font-size: 11px; line-height: 1.35; font-family: "DM Mono", monospace; }
 
-        .voice-bridge { 
-            display: flex; 
-            align-items: center; 
-            gap: 13px; 
-            margin: 20px 4px 0; 
-        }
+        .primary-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 40px; padding: 0 17px; color: #fffaf0; background: var(--fern-deep); border-radius: 999px; border: 0; box-shadow: 0 7px 16px rgba(0,0,0,.15); font-size: 12px; font-weight: 600; cursor: pointer; transition: transform .18s, filter .18s; }
+        .primary-button:hover { filter: brightness(1.1); transform: translateY(-2px); }
         
-        .large-mark { 
-            display: grid; 
-            place-items: center; 
-            width: 61px; 
-            height: 61px; 
-            flex: 0 0 auto; 
-            color: #fffaf0; 
-            background: var(--fern); 
-            border-radius: 24px 11px 24px 11px; 
-            box-shadow: 7px 7px 0 var(--grad1); 
-            transform: rotate(-8deg); 
-        }
-        
-        .large-mark svg { 
-            transform: rotate(8deg); 
-        }
-        
-        .voice-copy { 
-            color: var(--ink-soft); 
-            font-size: 12px; 
-            line-height: 1.42; 
-        }
-        
-        .voice-copy strong { 
-            display: block; 
-            margin-bottom: 2px; 
-            color: var(--ink); 
-            font-size: 13px; 
-        }
+        .listening .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--sun); box-shadow: 0 0 0 5px var(--grad1); animation: pulse 1.45s ease-in-out infinite; }
+        @keyframes pulse { 0%,100% { opacity: .5; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.1); } }
 
-        .divider { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            margin: 35px 0 22px; 
-            color: var(--ink-soft); 
-            font-size: 9px; 
-            font-family: "DM Mono", monospace; 
-            letter-spacing: .13em; 
-            text-transform: uppercase; 
-        }
-        
-        .divider::before, .divider::after { 
-            content: ""; 
-            flex: 1; 
-            height: 1px; 
-            background: var(--line); 
-        }
+        .voice-bridge { display: flex; align-items: center; gap: 13px; margin: 20px 4px 0; }
+        .large-mark { display: grid; place-items: center; width: 61px; height: 61px; flex: 0 0 auto; color: #fffaf0; background: var(--fern); border-radius: 24px 11px 24px 11px; box-shadow: 7px 7px 0 var(--grad1); transform: rotate(-8deg); }
+        .large-mark svg { transform: rotate(8deg); }
+        .voice-copy { color: var(--ink-soft); font-size: 12px; line-height: 1.42; }
+        .voice-copy strong { display: block; margin-bottom: 2px; color: var(--ink); font-size: 13px; }
 
-        .verdict { 
-            animation: rise .5s ease both; 
-        }
-        
-        @keyframes rise { 
-            from { opacity: 0; transform: translateY(8px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
-        
-        .verdict-top { 
-            display: flex; 
-            align-items: flex-start; 
-            justify-content: space-between; 
-            gap: 18px; 
-            margin-bottom: 17px; 
-        }
-        
-        .verdict-top h2 { 
-            margin: 0; 
-            color: var(--ink); 
-            font-family: "Playfair Display", Georgia, serif; 
-            font-size: 28px; 
-            font-weight: 500; 
-            letter-spacing: -.04em; 
-        }
-        
-        .verdict-top p { 
-            max-width: 245px; 
-            margin: 5px 0 0; 
-            color: var(--ink-soft); 
-            font-size: 12px; 
-            line-height: 1.55; 
-        }
-        
-        .speak-btn { 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 6px; 
-            padding: 6px 12px; 
-            border: 1px solid var(--line); 
-            border-radius: 999px; 
-            background: rgba(255,255,255,0.4); 
-            color: var(--fern-deep); 
-            font-size: 11px; 
-            font-weight: 600; 
-            cursor: pointer; 
-            transition: all 0.2s; 
-            backdrop-filter: blur(4px); 
-        }
-        
-        .speak-btn:hover { 
-            background: rgba(255,255,255,0.8); 
-        }
+        .divider { display: flex; align-items: center; gap: 12px; margin: 35px 0 22px; color: var(--ink-soft); font-size: 9px; font-family: "DM Mono", monospace; letter-spacing: .13em; text-transform: uppercase; }
+        .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 
-        .perspectives { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 11px; 
-            margin-top: 20px; 
-        }
+        .verdict { animation: rise .5s ease both; overflow: visible; }
+        @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         
-        .perspective { 
-            min-height: 170px; 
-            padding: 18px 17px; 
-            border: 1px solid var(--line); 
-            border-radius: 16px; 
-            background: rgba(255,255,255,.35); 
-            backdrop-filter: blur(8px); 
-        }
+        .verdict-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 17px; }
+        .verdict-top h2 { margin: 0; color: var(--ink); font-family: "Playfair Display", Georgia, serif; font-size: 28px; font-weight: 500; letter-spacing: -.04em; }
+        .verdict-top p { max-width: 245px; margin: 5px 0 0; color: var(--ink-soft); font-size: 12px; line-height: 1.55; }
         
-        .perspective.balance { 
-            grid-column: 1 / -1; 
-            min-height: 120px; 
-            background: rgba(255,255,255,.5); 
-        }
-        
-        .perspective-head { 
-            display: flex; 
-            align-items: center; 
-            gap: 9px; 
-            margin-bottom: 14px; 
-        }
-        
-        .perspective-dot { 
-            width: 9px; 
-            height: 9px; 
-            border-radius: 50% 50% 50% 2px; 
-            background: var(--sun); 
-            transform: rotate(-45deg); 
-        }
-        
+        .speak-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,0.4); color: var(--fern-deep); font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.2s; backdrop-filter: blur(4px); }
+        .speak-btn:hover { background: rgba(255,255,255,0.8); }
+
+        .perspectives { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; margin-top: 20px; }
+        .perspective { min-height: 170px; padding: 18px 17px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.35); backdrop-filter: blur(8px); }
+        .perspective.balance { grid-column: 1 / -1; min-height: 120px; background: rgba(255,255,255,.5); }
+        .perspective-head { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; }
+        .perspective-dot { width: 9px; height: 9px; border-radius: 50% 50% 50% 2px; background: var(--sun); transform: rotate(-45deg); }
         .perspective.risk .perspective-dot { background: var(--clay); }
         .perspective.balance .perspective-dot { background: var(--fern); }
-        
-        .perspective h3 { 
-            margin: 0; 
-            font-size: 12px; 
-            font-weight: 600; 
-            font-family: "DM Mono", monospace; 
-            letter-spacing: .08em; 
-            text-transform: uppercase; 
-        }
-        
-        .perspective p { 
-            margin: 0; 
-            color: var(--ink-soft); 
-            font-size: 13px; 
-            line-height: 1.58; 
-        }
-        
-        .perspective.balance p { 
-            color: var(--ink); 
-            font-family: "Playfair Display", Georgia, serif; 
-            font-size: 16px; 
-            line-height: 1.43; 
-        }
+        .perspective h3 { margin: 0; font-size: 12px; font-weight: 600; font-family: "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+        .perspective p { margin: 0; color: var(--ink-soft); font-size: 13px; line-height: 1.58; }
+        .perspective.balance p { color: var(--ink); font-family: "Playfair Display", Georgia, serif; font-size: 16px; line-height: 1.43; }
 
-        .verdict-foot { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            gap: 20px; 
-            margin-top: 15px; 
-            color: var(--ink-soft); 
-            font-size: 11px; 
-            font-family: "DM Mono", monospace; 
-            letter-spacing: .08em; 
-            text-transform: uppercase; 
-        }
-        
-        .save-button { 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 5px; 
-            padding: 0; 
-            color: var(--fern); 
-            background: transparent; 
-            border: 0; 
-            font-size: 11px; 
-            font-family: "DM Mono", monospace; 
-            cursor: pointer; 
-        }
-        
-        .save-button:hover { 
-            color: var(--clay); 
-        }
+        .verdict-foot { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 15px; color: var(--ink-soft); font-size: 11px; font-family: "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+        .save-button { display: inline-flex; align-items: center; gap: 5px; padding: 0; color: var(--fern); background: transparent; border: 0; font-size: 11px; font-family: "DM Mono", monospace; cursor: pointer; }
+        .save-button:hover { color: var(--clay); }
 
-        .toast { 
-            position: fixed; 
-            z-index: 4; 
-            right: 24px; 
-            bottom: 24px; 
-            display: flex; 
-            align-items: center; 
-            gap: 9px; 
-            padding: 12px 15px; 
-            border: 1px solid var(--line); 
-            border-radius: 12px; 
-            color: var(--ink); 
-            background: rgba(255,255,255,.95); 
-            box-shadow: 0 13px 30px rgba(0,0,0,.08); 
-            font-size: 12px; 
-            animation: rise .22s ease both; 
-            backdrop-filter: blur(10px); 
-        }
+        .toast { position: fixed; z-index: 4; right: 24px; bottom: 24px; display: flex; align-items: center; gap: 9px; padding: 12px 15px; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); background: rgba(255,255,255,.95); box-shadow: 0 13px 30px rgba(0,0,0,.08); font-size: 12px; animation: rise .22s ease both; backdrop-filter: blur(10px); }
 
-        #chatSection { 
-            display: none; 
-            margin-top: 45px; 
-            padding-top: 25px; 
-            border-top: 1px solid var(--line); 
-            animation: rise .5s ease both; 
-        }
-        
-        .chat-header h2 { 
-            margin: 0 0 20px 0; 
-            font-family: "Playfair Display", Georgia, serif; 
-            font-size: 24px; 
-            font-weight: 500; 
-            color: var(--ink); 
-        }
-        
-        .chat-bubble { 
-            padding: 16px; 
-            margin-bottom: 12px; 
-            border-radius: 18px; 
-            border: 1px solid var(--line); 
-            line-height: 1.5; 
-            font-size: 14px; 
-            backdrop-filter: blur(8px); 
-        }
-        
-        .bubble-user { 
-            background: rgba(255,255,255,.3); 
-            margin-left: 20px; 
-            border-bottom-right-radius: 4px; 
-        }
-        
-        .bubble-ai { 
-            background: rgba(255,255,255,.65); 
-            margin-right: 20px; 
-            border-bottom-left-radius: 4px; 
-        }
-        
-        .bubble-label { 
-            display: block; 
-            font-family: "DM Mono", monospace; 
-            font-size: 9px; 
-            letter-spacing: 0.1em; 
-            text-transform: uppercase; 
-            margin-bottom: 6px; 
-        }
-        
+        #chatSection { display: none; margin-top: 45px; padding-top: 25px; border-top: 1px solid var(--line); animation: rise .5s ease both; overflow: visible; }
+        .chat-header h2 { margin: 0 0 20px 0; font-family: "Playfair Display", Georgia, serif; font-size: 24px; font-weight: 500; color: var(--ink); }
+        .chat-bubble { padding: 16px; margin-bottom: 12px; border-radius: 18px; border: 1px solid var(--line); line-height: 1.5; font-size: 14px; backdrop-filter: blur(8px); }
+        .bubble-user { background: rgba(255,255,255,.3); margin-left: 20px; border-bottom-right-radius: 4px; }
+        .bubble-ai { background: rgba(255,255,255,.65); margin-right: 20px; border-bottom-left-radius: 4px; }
+        .bubble-label { display: block; font-family: "DM Mono", monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
         .bubble-user .bubble-label { color: var(--fern); }
         .bubble-ai .bubble-label { color: var(--clay); }
 
-        .drawer { 
-            position: absolute; 
-            top: 0; 
-            right: 0; 
-            display: flex; 
-            flex-direction: column; 
-            width: min(390px, calc(100% - 36px)); 
-            height: 100%; 
-            padding: 30px 27px; 
-            color: var(--ink); 
-            background: var(--paper); 
-            box-shadow: -16px 0 40px rgba(0,0,0,.1); 
-            animation: slide .26s cubic-bezier(.22,.75,.25,1) both; 
-            z-index: 6; 
-            overflow-y: auto; 
-        }
+        .drawer { position: absolute; top: 0; right: 0; display: flex; flex-direction: column; width: min(390px, calc(100% - 36px)); height: 100%; padding: 30px 27px; color: var(--ink); background: var(--paper); box-shadow: -16px 0 40px rgba(0,0,0,.1); animation: slide .26s cubic-bezier(.22,.75,.25,1) both; z-index: 6; overflow-y: auto; }
+        @keyframes slide { from { transform: translateX(100%); } to { transform: translateX(0); } }
+        .drawer-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 20px; border-bottom: 1px solid var(--line); flex: 0 0 auto; }
+        .drawer-head h2 { margin: 0; font-family: "Playfair Display", Georgia, serif; font-size: 26px; font-weight: 500; }
+        .drawer > p { color: var(--ink-soft); font-size: 13px; line-height: 1.5; }
         
-        @keyframes slide { 
-            from { transform: translateX(100%); } 
-            to { transform: translateX(0); } 
-        }
-        
-        .drawer-head { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            padding-bottom: 20px; 
-            border-bottom: 1px solid var(--line); 
-            flex: 0 0 auto; 
-        }
-        
-        .drawer-head h2 { 
-            margin: 0; 
-            font-family: "Playfair Display", Georgia, serif; 
-            font-size: 26px; 
-            font-weight: 500; 
-        }
-        
-        .drawer > p { 
-            color: var(--ink-soft); 
-            font-size: 13px; 
-            line-height: 1.5; 
-        }
-        
-        .history-item { 
-            width: 100%; 
-            margin-top: 14px; 
-            padding: 15px; 
-            border: 1px solid var(--line); 
-            border-radius: 14px 14px 24px 14px; 
-            color: var(--ink); 
-            text-align: left; 
-            background: rgba(255,255,255,.3); 
-            cursor: pointer; 
-            backdrop-filter: blur(4px); 
-        }
-        
-        .history-item:hover { 
-            border-color: rgba(69,107,91,.38); 
-            background: rgba(255,255,255,.6); 
-        }
-        
-        .history-item span { 
-            color: var(--clay); 
-            font-family: "DM Mono", monospace; 
-            font-size: 9px; 
-            letter-spacing: .1em; 
-            text-transform: uppercase; 
-        }
-        
-        .history-item p { 
-            margin: 8px 0 0; 
-            font-family: "Playfair Display", Georgia, serif; 
-            font-size: 17px; 
-            line-height: 1.35; 
-        }
-        
-        .empty-history { 
-            padding: 16px 0; 
-            color: var(--ink-soft); 
-            font-size: 13px; 
-            line-height: 1.55; 
-        }
-        
-        .drawer-footer { 
-            margin-top: auto; 
-            padding-top: 24px; 
-            color: var(--ink-soft); 
-            font-size: 11px; 
-            line-height: 1.5; 
-            font-family: "DM Mono", monospace; 
-        }
+        .history-item { width: 100%; margin-top: 14px; padding: 15px; border: 1px solid var(--line); border-radius: 14px 14px 24px 14px; color: var(--ink); text-align: left; background: rgba(255,255,255,.3); cursor: pointer; backdrop-filter: blur(4px); }
+        .history-item:hover { border-color: rgba(69,107,91,.38); background: rgba(255,255,255,.6); }
+        .history-item span { color: var(--clay); font-family: "DM Mono", monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+        .history-item p { margin: 8px 0 0; font-family: "Playfair Display", Georgia, serif; font-size: 17px; line-height: 1.35; }
+        .empty-history { padding: 16px 0; color: var(--ink-soft); font-size: 13px; line-height: 1.55; }
+        .drawer-footer { margin-top: auto; padding-top: 24px; color: var(--ink-soft); font-size: 11px; line-height: 1.5; font-family: "DM Mono", monospace; }
 
-        .backdrop { 
-            position: fixed; 
-            z-index: 5; 
-            inset: 0; 
-            background: rgba(0,0,0,.2); 
-            animation: fade .18s ease both; 
-            backdrop-filter: blur(3px); 
-        }
-        
-        @keyframes fade { 
-            from { opacity: 0; } 
-            to { opacity: 1; } 
-        }
+        .backdrop { position: fixed; z-index: 5; inset: 0; background: rgba(0,0,0,.2); animation: fade .18s ease both; backdrop-filter: blur(3px); }
+        @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 
         @media (max-width: 780px) {
             .topbar, .main { width: min(100% - 34px, 600px); }
             .topbar { height: 72px; }
             .nav-note { display: none; }
-            .main { padding: 54px 0 70px; }
+            .main { padding: 54px 0 90px; }
             .grid { grid-template-columns: 1fr; gap: 54px; }
         }
-        
         @media (max-width: 450px) {
             .topbar, .main { width: calc(100% - 28px); }
             .main { padding-top: 43px; }
@@ -854,7 +200,7 @@
         }
     </style>
 </head>
-    <body data-theme="default">
+<body data-theme="default">
     <div class="app-shell">
         <header class="topbar">
             <button class="brand" id="newReflectionBtn" type="button" aria-label="Start a new Advocate reflection">
@@ -888,7 +234,7 @@
                 <section>
                     <p class="kicker">The Cross-Discipline Matrix</p>
                     <h1 id="advocate-title">Let&apos;s make a little <em>room</em> for the thought.</h1>
-                    <p class="intro">Swipe the glass switch toggle below to change the botanical physics of how the board processes your dilemma.</p>
+                    <p class="intro">Select your analytical lens below to change the calming palette and physics of how the board processes your dilemma.</p>
                 </section>
 
                 <section class="stage">
@@ -896,14 +242,16 @@
                         <h2>Select Analytical Lens</h2>
                     </div>
                     
-                    <div class="lens-switch-track" id="lensTrack">
-                        <button class="lens-tab active" data-lens="default">Second-Order</button>
-                        <button class="lens-tab" data-lens="agile">Agile & Systems</button>
-                        <button class="lens-tab" data-lens="market">Market & Equity</button>
-                        <button class="lens-tab" data-lens="medical">Medical Triage</button>
-                        <button class="lens-tab" data-lens="evolution">Evolutionary Bio</button>
-                        <button class="lens-tab" data-lens="physics">Physics & Chem</button>
-                        <button class="lens-tab" data-lens="military">Military Strategy</button>
+                    <div class="lens-dropdown-container">
+                        <select id="lensTrack" class="lens-select-glass">
+                            <option value="default">Second-Order Strategy</option>
+                            <option value="agile">Agile & Systems Architecture</option>
+                            <option value="market">Market & Equity Analysis</option>
+                            <option value="medical">Medical Triage Protocol</option>
+                            <option value="evolution">Evolutionary Biology</option>
+                            <option value="physics">Physics & Chemistry</option>
+                            <option value="military">Military Strategy</option>
+                        </select>
                     </div>
 
                     <div class="composer">
@@ -928,10 +276,7 @@
                                 <path d="M4.5 19.1c3.4-4.6 7.2-7.5 11.6-9.6"/>
                             </svg>
                         </span>
-                        <p class="voice-copy">
-                            <strong id="voiceStatus">Prefer to speak?</strong>
-                            <span id="voiceHint">Tap the button above and let the first version be messy.</span>
-                        </p>
+                        <p class="voice-copy"><strong id="voiceStatus">Prefer to speak?</strong><span id="voiceHint">Tap the button above and let the first version be messy.</span></p>
                     </div>
                     
                     <div class="divider mono"><span>your three angles</span></div>
@@ -946,9 +291,7 @@
                             <textarea id="chatInput" rows="2" placeholder="What if I approach it differently?"></textarea>
                             <div class="composer-footer">
                                 <span class="composer-hint" id="chatStatus">The board is ready to listen.</span>
-                                <button class="primary-button" id="chatSendBtn" type="button">
-                                    <span id="chatLabel">reply</span>
-                                </button>
+                                <button class="primary-button" id="chatSendBtn" type="button"><span id="chatLabel">reply</span></button>
                             </div>
                         </div>
                     </div>
@@ -961,55 +304,13 @@
     </div>
         <script>
         const MATRIX = {
-            "default": { 
-                name: "Second-Order Strategy", 
-                system: "You are a 'Second-Order' analytical engine. You help humans see past their immediate biases.", 
-                a1: { title: "The hidden variable", prompt: "Identify the one critical real-world factor or blindspot the user is likely ignoring." }, 
-                a2: { title: "The ripple effect", prompt: "Predict the most likely 3-to-6 month ripple effect of this action that isn't immediately obvious." }, 
-                a3: { title: "The pivot", prompt: "Provide a concrete micro-adjustment or strategy to execute this plan better with lower risk." } 
-            },
-            "agile": { 
-                name: "Agile & Systems Architecture", 
-                system: "You are a ruthlessly efficient Systems Architect evaluating a messy human scenario.", 
-                a1: { title: "The technical debt", prompt: "Identify the underlying structural flaw or 'technical debt' dragging this situation down." }, 
-                a2: { title: "The scope creep", prompt: "Point out exactly where the user is overcomplicating things or expanding scope unnecessarily." }, 
-                a3: { title: "The next sprint", prompt: "Define the absolute smallest, fastest test (MVP) the user can execute tomorrow to unblock themselves." } 
-            },
-            "market": { 
-                name: "Market & Equity Analysis", 
-                system: "You are a cold, calculating financial investor analyzing a life/career choice.", 
-                a1: { title: "The sunk cost", prompt: "Identify what past investments (time/money/emotion) the user is irrationally holding onto." }, 
-                a2: { title: "The volatility risk", prompt: "Strip away all optimism: what is the most realistic 'bear case' where this plan crashes?" }, 
-                a3: { title: "The stop-loss", prompt: "Define a strict, objective metric or moment where the user must agree to cut their losses and walk away." } 
-            },
-            "medical": { 
-                name: "Medical Triage Protocol", 
-                system: "You are an emergency room triage doctor dealing with a crisis.", 
-                a1: { title: "The root disease", prompt: "Identify the actual 'disease' causing this problem, separating it from the distracting 'symptoms'." }, 
-                a2: { title: "The tourniquet", prompt: "What immediate, aggressive action must be taken RIGHT NOW to stop the bleeding/stabilize the situation?" }, 
-                a3: { title: "The recovery plan", prompt: "What does the harsh but necessary long-term physical/mental rehab look like for this?" } 
-            },
-            "evolution": { 
-                name: "Evolutionary Biology", 
-                system: "You analyze scenarios purely through the lens of Darwinian survival, adaptation, and competition.", 
-                a1: { title: "The Red Queen effect", prompt: "Where is the user exhausting themselves just to stay in the exact same place?" }, 
-                a2: { title: "Niche selection", prompt: "Stop competing in the open ocean. What hyper-specific micro-environment should they pivot to instead?" }, 
-                a3: { title: "The adaptation", prompt: "What harsh new reality must the user permanently adapt to if they want to survive this?" } 
-            },
-            "physics": { 
-                name: "Physics & Chemistry", 
-                system: "You view human motivation and roadblocks as literal mathematical equations of energy and mass.", 
-                a1: { title: "Activation energy", prompt: "Why is the initial 'spark' or friction too high right now? How can they drastically lower it?" }, 
-                a2: { title: "Momentum vectors", prompt: "What external forces will carry this forward regardless of the user's personal effort?" }, 
-                a3: { title: "Margin of safety", prompt: "Where in this plan is there absolutely zero margin of safety if a single component breaks?" } 
-            },
-            "military": { 
-                name: "Military Strategy", 
-                system: "You are a pragmatic battlefield general turning passive anxiety into tactical maneuvering.", 
-                a1: { title: "The map vs territory", prompt: "Where is the user confusing their flawless theoretical plan with the messy reality of executing it?" }, 
-                a2: { title: "Asymmetric warfare", prompt: "How can the user stop matching their problem's strength and weaponize their own agility instead?" }, 
-                a3: { title: "The next maneuver", prompt: "What is the immediate, calculated flanking maneuver to gain high ground?" } 
-            }
+            "default": { name: "Second-Order Strategy", system: "You are a 'Second-Order' analytical engine. You help humans see past their immediate biases.", a1: { title: "The hidden variable", prompt: "Identify the one critical real-world factor or blindspot the user is likely ignoring." }, a2: { title: "The ripple effect", prompt: "Predict the most likely 3-to-6 month ripple effect of this action that isn't immediately obvious." }, a3: { title: "The pivot", prompt: "Provide a concrete micro-adjustment or strategy to execute this plan better with lower risk." } },
+            "agile": { name: "Agile & Systems Architecture", system: "You are a ruthlessly efficient Systems Architect evaluating a messy human scenario.", a1: { title: "The technical debt", prompt: "Identify the underlying structural flaw or 'technical debt' dragging this situation down." }, a2: { title: "The scope creep", prompt: "Point out exactly where the user is overcomplicating things or expanding scope unnecessarily." }, a3: { title: "The next sprint", prompt: "Define the absolute smallest, fastest test (MVP) the user can execute tomorrow to unblock themselves." } },
+            "market": { name: "Market & Equity Analysis", system: "You are a cold, calculating financial investor analyzing a life/career choice.", a1: { title: "The sunk cost", prompt: "Identify what past investments (time/money/emotion) the user is irrationally holding onto." }, a2: { title: "The volatility risk", prompt: "Strip away all optimism: what is the most realistic 'bear case' where this plan crashes?" }, a3: { title: "The stop-loss", prompt: "Define a strict, objective metric or moment where the user must agree to cut their losses and walk away." } },
+            "medical": { name: "Medical Triage Protocol", system: "You are an emergency room triage doctor dealing with a crisis.", a1: { title: "The root disease", prompt: "Identify the actual 'disease' causing this problem, separating it from the distracting 'symptoms'." }, a2: { title: "The tourniquet", prompt: "What immediate, aggressive action must be taken RIGHT NOW to stop the bleeding/stabilize the situation?" }, a3: { title: "The recovery plan", prompt: "What does the harsh but necessary long-term physical/mental rehab look like for this?" } },
+            "evolution": { name: "Evolutionary Biology", system: "You analyze scenarios purely through the lens of Darwinian survival, adaptation, and competition.", a1: { title: "The Red Queen effect", prompt: "Where is the user exhausting themselves just to stay in the exact same place?" }, a2: { title: "Niche selection", prompt: "Stop competing in the open ocean. What hyper-specific micro-environment should they pivot to instead?" }, a3: { title: "The adaptation", prompt: "What harsh new reality must the user permanently adapt to if they want to survive this?" } },
+            "physics": { name: "Physics & Chemistry", system: "You view human motivation and roadblocks as literal mathematical equations of energy and mass.", a1: { title: "Activation energy", prompt: "Why is the initial 'spark' or friction too high right now? How can they drastically lower it?" }, a2: { title: "Momentum vectors", prompt: "What external forces will carry this forward regardless of the user's personal effort?" }, a3: { title: "Margin of safety", prompt: "Where in this plan is there absolutely zero margin of safety if a single component breaks?" } },
+            "military": { name: "Military Strategy", system: "You are a pragmatic battlefield general turning passive anxiety into tactical maneuvering.", a1: { title: "The map vs territory", prompt: "Where is the user confusing their flawless theoretical plan with the messy reality of executing it?" }, a2: { title: "Asymmetric warfare", prompt: "How can the user stop matching their problem's strength and weaponize their own agility instead?" }, a3: { title: "The next maneuver", prompt: "What is the immediate, calculated flanking maneuver to gain high ground?" } }
         };
 
         const ideaInput = document.getElementById('ideaInput');
@@ -1024,6 +325,7 @@
         const chatHistoryBox = document.getElementById('chatHistoryBox');
         const chatInput = document.getElementById('chatInput');
         const chatSendBtn = document.getElementById('chatSendBtn');
+        const lensTrack = document.getElementById('lensTrack');
 
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         let recognition = null;
@@ -1035,27 +337,19 @@
         let toastTimer = null;
 
         const KEY_PART_1 = "AQ.Ab8RN6L6rp"; 
-        const KEY_PART_2 = "YgzF7rJMvH49oXTAw24WUeQd_orpRJXjYY27xmXA"; 
+        const KEY_PART_2 = "PASTE_THE_REST_OF_YOUR_KEY_HERE"; 
         const API_KEY = KEY_PART_1 + KEY_PART_2;
 
         const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]));
 
         function showToast(message) {
-            toast.textContent = message; 
-            toast.hidden = false;
-            clearTimeout(toastTimer); 
-            toastTimer = setTimeout(() => { toast.hidden = true; }, 2600);
+            toast.textContent = message; toast.hidden = false;
+            clearTimeout(toastTimer); toastTimer = setTimeout(() => { toast.hidden = true; }, 2600);
         }
 
-        document.querySelectorAll('.lens-tab').forEach(tab => {
-            tab.addEventListener('click', (e) => {
-                document.querySelectorAll('.lens-tab').forEach(t => t.classList.remove('active'));
-                const btn = e.currentTarget;
-                btn.classList.add('active');
-                currentSelectedLens = btn.dataset.lens;
-                document.body.setAttribute('data-theme', currentSelectedLens); 
-                btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-            });
+        lensTrack.addEventListener('change', (e) => {
+            currentSelectedLens = e.target.value;
+            document.body.setAttribute('data-theme', currentSelectedLens);
         });
 
         function playVoiceSynthesis() {
@@ -1072,8 +366,7 @@
             const text = `The board has translated your scenario through the ${currentLensData.name} framework. First, ${currentLensData.a1.title}. ${a1} Second, ${currentLensData.a2.title}. ${a2} Finally, ${currentLensData.a3.title}. ${a3}`;
                           
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'en-IN'; 
-            utterance.rate = 0.95; 
+            utterance.lang = 'en-IN'; utterance.rate = 0.95; 
             utterance.onend = () => { if (btn) btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg> Read Aloud`; };
             window.speechSynthesis.speak(utterance);
         }
@@ -1097,8 +390,7 @@
         }
 
         function renderVerdict(result, lens) {
-            currentVerdict = result; 
-            currentLensData = lens;
+            currentVerdict = result; currentLensData = lens;
             const a1 = result.angle1 || result.hidden_variable || "Analysis unavailable.";
             const a2 = result.angle2 || result.second_order || "Analysis unavailable.";
             const a3 = result.angle3 || result.pivot || "Analysis unavailable.";
@@ -1128,17 +420,14 @@
             
             document.getElementById('speakBoardBtn').addEventListener('click', playVoiceSynthesis);
             document.getElementById('saveBtn').addEventListener('click', saveReflection);
-            chatSection.style.display = 'block'; 
-            chatHistoryBox.innerHTML = ''; 
+            chatSection.style.display = 'block'; chatHistoryBox.innerHTML = ''; 
         }
-
-        async function debateIdea(rawIdea) {
+                    async function debateIdea(rawIdea) {
             const idea = rawIdea.trim();
             if (!idea) { showToast('Write or speak an idea first.'); return; }
             
             const activeLens = MATRIX[currentSelectedLens] || MATRIX["default"];
-            isListening = false; 
-            window.speechSynthesis.cancel(); 
+            isListening = false; window.speechSynthesis.cancel(); 
             voiceStatus.textContent = `Applying ${activeLens.name}…`;
             voiceHint.textContent = 'The board is translating your scenario.';
             setThinking(true);
@@ -1147,8 +436,7 @@
                 const systemPrompt = `${activeLens.system}\nThe user's real-world scenario/plan is: "${idea}"\n\nRespond ONLY in valid JSON format with three exact keys: "angle1", "angle2", and "angle3". Keep answers highly insightful, pragmatic, and under 3 sentences each.\n\n{\n  "angle1": "${activeLens.a1.prompt}",\n  "angle2": "${activeLens.a2.prompt}",\n  "angle3": "${activeLens.a3.prompt}"\n}`;
 
                 const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${API_KEY}`, {
-                    method: 'POST', 
-                    headers: { 'Content-Type': 'application/json' },
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: systemPrompt }] }] })
                 });
 
@@ -1163,86 +451,53 @@
                     { role: "model", parts: [{ text: `Here is my structural analysis using ${activeLens.name}:\n${activeLens.a1.title}: ${result.angle1}\n${activeLens.a2.title}: ${result.angle2}\n${activeLens.a3.title}: ${result.angle3}` }] }
                 ];
                 renderVerdict(result, activeLens);
-                voiceStatus.textContent = 'A little more room'; 
-                voiceHint.textContent = 'Keep the useful part. Leave the rest.';
+                voiceStatus.textContent = 'A little more room'; voiceHint.textContent = 'Keep the useful part. Leave the rest.';
             } catch (error) {
                 emptyVerdict('API Error: ' + error.message);
-                voiceStatus.textContent = 'The thought is still here'; 
-                voiceHint.textContent = 'Check your connection and try once more.';
-            } finally { 
-                setThinking(false); 
-            }
+                voiceStatus.textContent = 'The thought is still here'; voiceHint.textContent = 'Check your connection and try once more.';
+            } finally { setThinking(false); }
         }
 
         function startListening() {
             if (!recognition || isListening) return;
             window.speechSynthesis.cancel();
-            recognition.start(); 
-            isListening = true;
-            voiceStatus.textContent = 'Listening gently'; 
-            voiceHint.textContent = 'Let the first version be messy.';
+            recognition.start(); isListening = true;
+            voiceStatus.textContent = 'Listening gently'; voiceHint.textContent = 'Let the first version be messy.';
             setThinking(true);
         }
 
         if (SpeechRecognition) {
-            recognition = new SpeechRecognition(); 
-            recognition.continuous = false; 
-            recognition.interimResults = true; 
-            recognition.lang = 'en-IN';
-            
+            recognition = new SpeechRecognition(); recognition.continuous = false; recognition.interimResults = true; recognition.lang = 'en-IN';
             recognition.onresult = (e) => {
                 const transcript = Array.from(e.results).map((r) => r[0].transcript).join('');
                 ideaInput.value = transcript;
                 if (e.results[0].isFinal) debateIdea(transcript);
             };
-            
-            recognition.onerror = () => { 
-                isListening = false; 
-                voiceStatus.textContent = 'Prefer to speak?'; 
-                voiceHint.textContent = 'I missed that. You can try again or type below.'; 
-                setThinking(false); 
-            };
-            
-            recognition.onend = () => { 
-                isListening = false; 
-                if (!currentVerdict) setThinking(false); 
-            };
-        } else { 
-            voiceStatus.textContent = 'Voice input unavailable'; 
-            voiceHint.textContent = 'Type your thought below instead.'; 
-        }
+            recognition.onerror = () => { isListening = false; voiceStatus.textContent = 'Prefer to speak?'; voiceHint.textContent = 'I missed that. You can try again or type below.'; setThinking(false); };
+            recognition.onend = () => { isListening = false; if (!currentVerdict) setThinking(false); };
+        } else { voiceStatus.textContent = 'Voice input unavailable'; voiceHint.textContent = 'Type your thought below instead.'; }
 
         function appendChatMessage(sender, text) {
             const div = document.createElement('div');
             div.className = sender === 'You' ? 'chat-bubble bubble-user' : 'chat-bubble bubble-ai';
             div.innerHTML = `<span class="bubble-label">${sender}</span>${escapeHtml(text).replace(/\\n/g, '<br>')}`;
-            chatHistoryBox.appendChild(div); 
-            div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            chatHistoryBox.appendChild(div); div.scrollIntoView({ behavior: 'smooth', block: 'end' });
         }
 
         async function sendFollowUp() {
-            const msg = chatInput.value.trim(); 
-            if(!msg) return;
-            
-            appendChatMessage('You', msg); 
-            chatInput.value = '';
-            document.getElementById('chatSendBtn').disabled = true; 
-            document.getElementById('chatLabel').textContent = 'reflecting...';
+            const msg = chatInput.value.trim(); if(!msg) return;
+            appendChatMessage('You', msg); chatInput.value = '';
+            document.getElementById('chatSendBtn').disabled = true; document.getElementById('chatLabel').textContent = 'reflecting...';
             document.getElementById('chatStatus').textContent = 'Advocate is considering your follow-up...';
-            
             conversationHistory.push({ role: "user", parts: [{ text: msg }] });
             const activeLens = currentLensData || MATRIX["default"];
 
             try {
                 const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${API_KEY}`, {
-                    method: 'POST', 
-                    headers: { 'Content-Type': 'application/json' },
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: conversationHistory, systemInstruction: { parts: [{ text: `You are the Advocate app. You analyzed the user's situation using ${activeLens.name}. ${activeLens.system} Discuss the findings, stay rigidly in character for this specific discipline.` }] } })
                 });
-                
-                const data = await response.json(); 
-                if (data.error) throw new Error(data.error.message);
-                
+                const data = await response.json(); if (data.error) throw new Error(data.error.message);
                 const reply = data.candidates[0].content.parts[0].text;
                 conversationHistory.push({ role: "model", parts: [{ text: reply }] });
                 appendChatMessage('Advocate Board', reply);
@@ -1250,19 +505,11 @@
             } catch (error) {
                 appendChatMessage('Error', 'Failed to connect. ' + error.message);
             } finally {
-                document.getElementById('chatSendBtn').disabled = false; 
-                document.getElementById('chatLabel').textContent = 'reply';
+                document.getElementById('chatSendBtn').disabled = false; document.getElementById('chatLabel').textContent = 'reply';
             }
         }
 
-        function getHistory() { 
-            try { 
-                return JSON.parse(localStorage.getItem('advocate-reflections') || '[]'); 
-            } catch (e) { 
-                return []; 
-            } 
-        }
-        
+        function getHistory() { try { return JSON.parse(localStorage.getItem('advocate-reflections') || '[]'); } catch (e) { return []; } }
         function saveReflection() {
             if (!currentVerdict || !ideaInput.value.trim() || !currentLensData) return;
             const history = getHistory().filter((item) => item.idea !== ideaInput.value.trim());
@@ -1273,34 +520,23 @@
         }
 
         function openDrawer(kind) {
-            drawerLayer.innerHTML = ''; 
-            const drawer = document.createElement('aside'); 
-            drawer.className = 'drawer';
-            
+            drawerLayer.innerHTML = ''; const drawer = document.createElement('aside'); drawer.className = 'drawer';
             if (kind === 'history') {
                 const history = getHistory();
                 drawer.innerHTML = `<div class="drawer-head"><h2>Saved thoughts</h2><button class="icon-button drawer-close" type="button">×</button></div><p>A small collection of moments you decided to look at more kindly.</p>`;
                 if (!history.length) drawer.insertAdjacentHTML('beforeend', '<p class="empty-history">Nothing saved yet.</p>');
                 else {
                     history.forEach((item) => {
-                        const btn = document.createElement('button'); 
-                        btn.className = 'history-item'; 
-                        btn.type = 'button';
+                        const btn = document.createElement('button'); btn.className = 'history-item'; btn.type = 'button';
                         const lensName = item.lens ? item.lens.name : "Strategy";
                         btn.innerHTML = `<span>${new Date(item.savedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })} · ${lensName}</span><p>${escapeHtml(item.idea)}</p>`;
                         btn.addEventListener('click', () => {
                             ideaInput.value = item.idea;
                             const targetLens = item.lens || MATRIX["default"];
-                            document.querySelectorAll('.lens-tab').forEach(t => {
-                                t.classList.remove('active');
-                                if (MATRIX[t.dataset.lens].name === targetLens.name) {
-                                    t.classList.add('active'); 
-                                    currentSelectedLens = t.dataset.lens;
-                                    document.body.setAttribute('data-theme', currentSelectedLens);
-                                }
-                            });
-                            renderVerdict(item.verdict, targetLens); 
-                            closeDrawer();
+                            lensTrack.value = Object.keys(MATRIX).find(key => MATRIX[key].name === targetLens.name) || "default";
+                            currentSelectedLens = lensTrack.value;
+                            document.body.setAttribute('data-theme', currentSelectedLens);
+                            renderVerdict(item.verdict, targetLens); closeDrawer();
                         });
                         drawer.appendChild(btn);
                     });
@@ -1312,46 +548,25 @@
                     <div class="history-item"><span>Agile & Systems</span><p>Treats your dilemma like an architecture failure. Finds the technical debt.</p></div>
                     <div class="history-item"><span>Market & Equity</span><p>Treats your problem like a stock portfolio. Finds the sunk cost and stop-loss.</p></div>
                     <div class="history-item"><span>Medical Triage</span><p>Treats your anxiety like a bleeding wound. Finds the immediate tourniquet.</p></div>
-                    <div class="drawer-footer">You stay in charge. The verdict is a mirror, not an instruction.</div>`;
+                    <div class="drawer-footer">You stay in charge. The verdict is a mirror, not an instruction.</div`;
             }
             drawer.querySelector('.drawer-close').addEventListener('click', closeDrawer);
-            drawerLayer.appendChild(drawer); 
-            drawerLayer.hidden = false; 
+            drawerLayer.appendChild(drawer); drawerLayer.hidden = false; 
         }
 
-        function closeDrawer() { 
-            drawerLayer.hidden = true; 
-        }
+        function closeDrawer() { drawerLayer.hidden = true; }
 
-        thinkBtn.addEventListener('click', () => { 
-            if (ideaInput.value.trim()) debateIdea(ideaInput.value); 
-            else if (recognition) startListening(); 
-            else ideaInput.focus(); 
-        });
-        
+        thinkBtn.addEventListener('click', () => { if (ideaInput.value.trim()) debateIdea(ideaInput.value); else if (recognition) startListening(); else ideaInput.focus(); });
         document.getElementById('chatSendBtn').addEventListener('click', sendFollowUp);
-        
         document.getElementById('newReflectionBtn').addEventListener('click', () => {
             window.speechSynthesis.cancel();
-            ideaInput.value = ''; 
-            document.getElementById('chatInput').value = ''; 
-            conversationHistory = []; 
-            currentVerdict = null;
-            emptyVerdict(); 
-            voiceStatus.textContent = 'Prefer to speak?'; 
-            voiceHint.textContent = 'Tap the button above and let the first version be messy.';
+            ideaInput.value = ''; document.getElementById('chatInput').value = ''; conversationHistory = []; currentVerdict = null;
+            emptyVerdict(); voiceStatus.textContent = 'Prefer to speak?'; voiceHint.textContent = 'Tap the button above and let the first version be messy. ';
         });
-        
         document.getElementById('historyBtn').addEventListener('click', () => openDrawer('history'));
         document.getElementById('helpBtn').addEventListener('click', () => openDrawer('help'));
-        
-        drawerLayer.addEventListener('click', (e) => { 
-            if (e.target === drawerLayer) closeDrawer(); 
-        });
-        
-        document.addEventListener('keydown', (e) => { 
-            if (e.key === 'Escape') closeDrawer(); 
-        });
+        drawerLayer.addEventListener('click', (e) => { if (e.target === drawerLayer) closeDrawer(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
 
         emptyVerdict();
     </script>
