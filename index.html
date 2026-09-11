@@ -44,6 +44,11 @@
             --fern: #8c583f; --fern-deep: #593727; --clay: #9e4a32; --sun: #cca07a;
             --grad1: rgba(140,88,63,.15); --grad2: rgba(204,160,122,.2); --line: rgba(140,88,63,.16);
         }
+        [data-theme="roast"], [data-theme="tarot"], [data-theme="delusion"] {
+            --ink: #3a2235; --ink-soft: #72526a; --paper: #f9f2f7;
+            --fern: #8c4275; --fern-deep: #592447; --clay: #ba5972; --sun: #e5b7c7;
+            --grad1: rgba(189,82,143,.18); --grad2: rgba(140,66,117,.15); --line: rgba(140,66,117,.2);
+        }
 
         * { box-sizing: border-box; }
         body, .app-shell, .composer, .perspective, .lens-select-glass, textarea, button, h1, h2, h3, p, span {
@@ -85,7 +90,9 @@
         h1 { max-width: 430px; margin: 0; color: var(--ink); font-family: "Playfair Display", Georgia, serif; font-size: clamp(43px,5.8vw,76px); font-weight: 500; letter-spacing: -.055em; line-height: .98; }
         h1 em { color: var(--fern); font-style: italic; }
         .intro { max-width: 345px; margin: 27px 0 0; color: var(--ink-soft); font-size: 15px; line-height: 1.65; }
-
+    </style>
+</head>
+    <style>
         .stage-label { margin-bottom: 14px; }
         .stage-label h2 { margin: 0 0 10px 0; font-size: 13px; font-weight: 600; }
         
@@ -200,7 +207,7 @@
         }
     </style>
 </head>
-<body data-theme="default">
+    <body data-theme="default">
     <div class="app-shell">
         <header class="topbar">
             <button class="brand" id="newReflectionBtn" type="button" aria-label="Start a new Advocate reflection">
@@ -234,7 +241,7 @@
                 <section>
                     <p class="kicker">The Cross-Discipline Matrix</p>
                     <h1 id="advocate-title">Let&apos;s make a little <em>room</em> for the thought.</h1>
-                    <p class="intro">Select your analytical lens below to change the calming palette and physics of how the board processes your dilemma.</p>
+                    <p class="intro">Select your analytical lens or Gen Z chaos mode below to process your dilemma.</p>
                 </section>
 
                 <section class="stage">
@@ -251,6 +258,9 @@
                             <option value="evolution">Evolutionary Biology</option>
                             <option value="physics">Physics & Chemistry</option>
                             <option value="military">Military Strategy</option>
+                            <option value="roast">🔥 Roast My Dilemma (Gen Z Brutal Check)</option>
+                            <option value="tarot">🔮 Vibe Check Tarot Oracle</option>
+                            <option value="delusion">💀 Delusion vs. Canon Event Calculator</option>
                         </select>
                     </div>
 
@@ -310,7 +320,10 @@
             "medical": { name: "Medical Triage Protocol", system: "You are an emergency room triage doctor dealing with a crisis.", a1: { title: "The root disease", prompt: "Identify the actual 'disease' causing this problem, separating it from the distracting 'symptoms'." }, a2: { title: "The tourniquet", prompt: "What immediate, aggressive action must be taken RIGHT NOW to stop the bleeding/stabilize the situation?" }, a3: { title: "The recovery plan", prompt: "What does the harsh but necessary long-term physical/mental rehab look like for this?" } },
             "evolution": { name: "Evolutionary Biology", system: "You analyze scenarios purely through the lens of Darwinian survival, adaptation, and competition.", a1: { title: "The Red Queen effect", prompt: "Where is the user exhausting themselves just to stay in the exact same place?" }, a2: { title: "Niche selection", prompt: "Stop competing in the open ocean. What hyper-specific micro-environment should they pivot to instead?" }, a3: { title: "The adaptation", prompt: "What harsh new reality must the user permanently adapt to if they want to survive this?" } },
             "physics": { name: "Physics & Chemistry", system: "You view human motivation and roadblocks as literal mathematical equations of energy and mass.", a1: { title: "Activation energy", prompt: "Why is the initial 'spark' or friction too high right now? How can they drastically lower it?" }, a2: { title: "Momentum vectors", prompt: "What external forces will carry this forward regardless of the user's personal effort?" }, a3: { title: "Margin of safety", prompt: "Where in this plan is there absolutely zero margin of safety if a single component breaks?" } },
-            "military": { name: "Military Strategy", system: "You are a pragmatic battlefield general turning passive anxiety into tactical maneuvering.", a1: { title: "The map vs territory", prompt: "Where is the user confusing their flawless theoretical plan with the messy reality of executing it?" }, a2: { title: "Asymmetric warfare", prompt: "How can the user stop matching their problem's strength and weaponize their own agility instead?" }, a3: { title: "The next maneuver", prompt: "What is the immediate, calculated flanking maneuver to gain high ground?" } }
+            "military": { name: "Military Strategy", system: "You are a pragmatic battlefield general turning passive anxiety into tactical maneuvering.", a1: { title: "The map vs territory", prompt: "Where is the user confusing their flawless theoretical plan with the messy reality of executing it?" }, a2: { title: "Asymmetric warfare", prompt: "How can the user stop matching their problem's strength and weaponize their own agility instead?" }, a3: { title: "The next maneuver", prompt: "What is the immediate, calculated flanking maneuver to gain high ground?" } },
+            "roast": { name: "Roast My Dilemma", system: "You are an over-it Gen Z best friend and savage internet commentator. Strip away all self-justification, call out delusions using internet slang, and brutally expose why their plan is an L, while dropping one surprisingly accurate piece of advice.", a1: { title: "The Main Character Delusion", prompt: "Call out the exact self-sabotaging delusion or cope in their plan." }, a2: { title: "The Massive L (Loss)", prompt: "Explain in brutal slang why this choice is going to backfire horribly." }, a3: { title: "Touch Grass Advice", prompt: "Give them one hyper-pragmatic, no-nonsense tip to fix their life." } },
+            "tarot": { name: "Vibe Check Tarot Oracle", system: "You are a mystical, sarcastic internet tarot reader pulling abstract chaos oracle cards for modern overthinkers.", a1: { title: "The Card Pulled", prompt: "Name a funny, dramatic mystical card representing their current chaotic energy." }, a2: { title: "The Energy Check", prompt: "Read their aura and explain why they are stressing over nothing or walking into a trap." }, a3: { title: "The Manifestation Move", prompt: "Give them an unhinged yet effective action step to change their vibe." } },
+            "delusion": { name: "Delusion vs Canon Event", system: "You are an internet supreme judge calculating whether a life situation is a necessary Canon Event or 100% Pure Delusion.", a1: { title: "Canon Event Probability", prompt: "State whether this is a canon event or pure delusion with a mock percentage." }, a2: { title: "Why You're Gaslighting Yourself", prompt: "Break down the exact mental gymnastics they are performing." }, a3: { title: "Character Arc Upgrade", prompt: "Tell them how to survive this era and lock in." } }
         };
 
         const ideaInput = document.getElementById('ideaInput');
@@ -337,7 +350,7 @@
         let toastTimer = null;
 
         const KEY_PART_1 = "AQ.Ab8RN6L6rp"; 
-        const KEY_PART_2 = "YgzF7rJMvH49oXTAw24WUeQd_orpRJXjYY27xmXA"; 
+        const KEY_PART_2 = "PASTE_THE_REST_OF_YOUR_KEY_HERE"; 
         const API_KEY = KEY_PART_1 + KEY_PART_2;
 
         const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]));
@@ -351,7 +364,8 @@
             currentSelectedLens = e.target.value;
             document.body.setAttribute('data-theme', currentSelectedLens);
         });
-
+                </script>
+                    <script>
         function playVoiceSynthesis() {
             if (window.speechSynthesis.speaking) { window.speechSynthesis.cancel(); return; }
             if (!currentVerdict || !currentLensData) return;
@@ -384,7 +398,7 @@
             }
         }
 
-        function emptyVerdict(message = 'When you are ready, speak or write a little more and we will begin.') {
+        function emptyVerdict(message = 'When you are ready, speak or write a little more and will begin.') {
             verdictBoard.innerHTML = `<div class="verdict-top"><div><h2>We&apos;ll look from three sides.</h2><p>${escapeHtml(message)}</p></div><span class="verdict-state">waiting</span></div>`;
             chatSection.style.display = 'none';
         }
@@ -422,7 +436,8 @@
             document.getElementById('saveBtn').addEventListener('click', saveReflection);
             chatSection.style.display = 'block'; chatHistoryBox.innerHTML = ''; 
         }
-                            async function debateIdea(rawIdea) {
+
+        async function debateIdea(rawIdea) {
             const idea = rawIdea.trim();
             if (!idea) { showToast('Write or speak an idea first.'); return; }
             
@@ -435,7 +450,7 @@
             try {
                 const systemPrompt = `${activeLens.system}\nThe user's real-world scenario/plan is: "${idea}"\n\nRespond ONLY in valid JSON format with three exact keys: "angle1", "angle2", and "angle3". Keep answers highly insightful, pragmatic, and under 3 sentences each.\n\n{\n  "angle1": "${activeLens.a1.prompt}",\n  "angle2": "${activeLens.a2.prompt}",\n  "angle3": "${activeLens.a3.prompt}"\n}`;
 
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${API_KEY}`, {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: systemPrompt }] }] })
                 });
@@ -456,8 +471,7 @@
                 emptyVerdict('API Error: ' + error.message);
                 voiceStatus.textContent = 'The thought is still here'; voiceHint.textContent = 'Check your connection and try once more.';
             } finally { setThinking(false); }
-                    }
-                        
+        }
 
         function startListening() {
             if (!recognition || isListening) return;
@@ -485,7 +499,7 @@
             chatHistoryBox.appendChild(div); div.scrollIntoView({ behavior: 'smooth', block: 'end' });
         }
 
-                async function sendFollowUp() {
+        async function sendFollowUp() {
             const msg = chatInput.value.trim(); if(!msg) return;
             appendChatMessage('You', msg); chatInput.value = '';
             document.getElementById('chatSendBtn').disabled = true; document.getElementById('chatLabel').textContent = 'reflecting...';
@@ -494,7 +508,7 @@
             const activeLens = currentLensData || MATRIX["default"];
 
             try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: conversationHistory, systemInstruction: { parts: [{ text: `You are the Advocate app. You analyzed the user's situation using ${activeLens.name}. ${activeLens.system} Discuss the findings, stay rigidly in character for this specific discipline.` }] } })
                 });
@@ -508,8 +522,7 @@
             } finally {
                 document.getElementById('chatSendBtn').disabled = false; document.getElementById('chatLabel').textContent = 'reply';
             }
-                }
-                    
+        }
 
         function getHistory() { try { return JSON.parse(localStorage.getItem('advocate-reflections') || '[]'); } catch (e) { return []; } }
         function saveReflection() {
@@ -550,7 +563,7 @@
                     <div class="history-item"><span>Agile & Systems</span><p>Treats your dilemma like an architecture failure. Finds the technical debt.</p></div>
                     <div class="history-item"><span>Market & Equity</span><p>Treats your problem like a stock portfolio. Finds the sunk cost and stop-loss.</p></div>
                     <div class="history-item"><span>Medical Triage</span><p>Treats your anxiety like a bleeding wound. Finds the immediate tourniquet.</p></div>
-                    <div class="drawer-footer">You stay in charge. The verdict is a mirror, not an instruction.</div`;
+                    <div class="drawer-footer">You stay in charge. The verdict is a mirror, not an instruction.</div>`;
             }
             drawer.querySelector('.drawer-close').addEventListener('click', closeDrawer);
             drawerLayer.appendChild(drawer); drawerLayer.hidden = false; 
@@ -563,7 +576,7 @@
         document.getElementById('newReflectionBtn').addEventListener('click', () => {
             window.speechSynthesis.cancel();
             ideaInput.value = ''; document.getElementById('chatInput').value = ''; conversationHistory = []; currentVerdict = null;
-            emptyVerdict(); voiceStatus.textContent = 'Prefer to speak?'; voiceHint.textContent = 'Tap the button above and let the first version be messy. ';
+            emptyVerdict(); voiceStatus.textContent = 'Prefer to speak?'; voiceHint.textContent = 'Tap the button above and let the first version be messy.';
         });
         document.getElementById('historyBtn').addEventListener('click', () => openDrawer('history'));
         document.getElementById('helpBtn').addEventListener('click', () => openDrawer('help'));
