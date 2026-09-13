@@ -394,7 +394,7 @@
             triggerHaptic([20, 30, 20]);
         });
             </script>
-                <script>
+                    <script>
         function playVoiceSynthesis() {
             if (window.speechSynthesis.speaking) { window.speechSynthesis.cancel(); return; }
             if (!currentVerdict || !currentLensData) return;
@@ -512,7 +512,9 @@
             try {
                 const systemPrompt = `${activeLens.system}\nThe user's real-world scenario/plan is: "${idea}"\n\nRespond ONLY in valid JSON format with three exact keys: "angle1", "angle2", and "angle3". Keep answers highly insightful, pragmatic, and under 3 sentences each.\n\n{\n  "angle1": "${activeLens.a1.prompt}",\n  "angle2": "${activeLens.a2.prompt}",\n  "angle3": "${activeLens.a3.prompt}"\n}`;
 
-                const response = await fetch(`https://corsproxy.io/?url=` + encodeURIComponent(`https://generativelanguage.googleapis.com/v1beta/gemini-3.6-flash:generateContent?key=${API_KEY}`), {
+                // Wrapped with CORS proxy to bypass browser restrictions on GitHub Pages
+                const targetUrl = `https://generativelanguage.googleapis.com/v1beta/gemini-3.6-flash:generateContent?key=${API_KEY}`;
+                const response = await fetch(`https://corsproxy.io/?url=` + encodeURIComponent(targetUrl), {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: systemPrompt }] }] })
                 });
@@ -573,7 +575,8 @@
             const activeLens = currentLensData || MATRIX["default"];
 
             try {
-                const response = await fetch(`https://corsproxy.io/?url=` + encodeURIComponent(`https://generativelanguage.googleapis.com/v1beta/gemini-3.6-flash:generateContent?key=${API_KEY}`), {
+                const targetUrl = `https://generativelanguage.googleapis.com/v1beta/gemini-3.6-flash:generateContent?key=${API_KEY}`;
+                const response = await fetch(`https://corsproxy.io/?url=` + encodeURIComponent(targetUrl), {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: conversationHistory, systemInstruction: { parts: [{ text: `You are the Advocate app. You analyzed the user's situation using ${activeLens.name}. ${activeLens.system} Discuss the findings, stay rigidly in character for this specific discipline.` }] } })
                 });
@@ -674,3 +677,4 @@
     </script>
 </body>
 </html>
+
