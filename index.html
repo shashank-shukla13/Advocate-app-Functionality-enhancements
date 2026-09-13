@@ -13,41 +13,49 @@
             --ink: #233d36; --ink-soft: #5d7068; --paper: #f6f3eb; 
             --fern: #456b5b; --fern-deep: #315245; --clay: #ba7259; --sun: #e5bb71;
             --grad1: rgba(227,187,113,.2); --grad2: rgba(165,184,165,.29); --line: rgba(49, 82, 69, .16);
+            --card-glow: rgba(69, 107, 91, 0.15);
         }
         [data-theme="agile"] {
             --ink: #1e323b; --ink-soft: #526872; --paper: #f0f4f7; 
             --fern: #3b7080; --fern-deep: #254b54; --clay: #7c736e; --sun: #8ab4c0;
             --grad1: rgba(59,112,128,.15); --grad2: rgba(138,180,192,.2); --line: rgba(59,112,128,.16);
+            --card-glow: rgba(59, 112, 128, 0.2);
         }
         [data-theme="market"] {
             --ink: #382c26; --ink-soft: #705e54; --paper: #f7f4f0; 
             --fern: #8c5e43; --fern-deep: #593b29; --clay: #a65d37; --sun: #d4a373;
             --grad1: rgba(140,94,67,.15); --grad2: rgba(212,163,115,.2); --line: rgba(140,94,67,.16);
+            --card-glow: rgba(140, 94, 67, 0.2);
         }
         [data-theme="medical"] {
             --ink: #243630; --ink-soft: #586e65; --paper: #f1f6f4; 
             --fern: #4a7c66; --fern-deep: #304f41; --clay: #9e6b56; --sun: #94b9a7;
             --grad1: rgba(74,124,102,.15); --grad2: rgba(148,185,167,.2); --line: rgba(74,124,102,.16);
+            --card-glow: rgba(74, 124, 102, 0.2);
         }
         [data-theme="evolution"] {
             --ink: #303628; --ink-soft: #636b56; --paper: #f4f6f0; 
             --fern: #627042; --fern-deep: #3f472a; --clay: #b06b52; --sun: #c2b280;
             --grad1: rgba(98,112,66,.15); --grad2: rgba(194,178,128,.2); --line: rgba(98,112,66,.16);
+            --card-glow: rgba(98, 112, 66, 0.2);
         }
         [data-theme="physics"] {
             --ink: #2d2b38; --ink-soft: #605c70; --paper: #f4f3f7; 
             --fern: #685b8a; --fern-deep: #433958; --clay: #a86b72; --sun: #b09ebb;
             --grad1: rgba(104,91,138,.15); --grad2: rgba(176,158,187,.2); --line: rgba(104,91,138,.16);
+            --card-glow: rgba(104, 91, 138, 0.2);
         }
         [data-theme="military"] {
             --ink: #382c25; --ink-soft: #6e5e52; --paper: #f7f4f0; 
             --fern: #8c583f; --fern-deep: #593727; --clay: #9e4a32; --sun: #cca07a;
             --grad1: rgba(140,88,63,.15); --grad2: rgba(204,160,122,.2); --line: rgba(140,88,63,.16);
+            --card-glow: rgba(140, 88, 63, 0.2);
         }
         [data-theme="roast"], [data-theme="tarot"], [data-theme="delusion"] {
             --ink: #3a2235; --ink-soft: #72526a; --paper: #f9f2f7;
             --fern: #8c4275; --fern-deep: #592447; --clay: #ba5972; --sun: #e5b7c7;
             --grad1: rgba(189,82,143,.18); --grad2: rgba(140,66,117,.15); --line: rgba(140,66,117,.2);
+            --card-glow: rgba(189, 82, 143, 0.28);
         }
 
         * { box-sizing: border-box; }
@@ -146,18 +154,33 @@
         .speak-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,0.4); color: var(--fern-deep); font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.2s; backdrop-filter: blur(4px); }
         .speak-btn:hover { background: rgba(255,255,255,0.8); }
 
-        .perspectives { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; margin-top: 20px; }
-        .perspective { min-height: 170px; padding: 18px 17px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.35); backdrop-filter: blur(8px); }
-        .perspective.balance { grid-column: 1 / -1; min-height: 120px; background: rgba(255,255,255,.5); }
-        .perspective-head { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; }
-        .perspective-dot { width: 9px; height: 9px; border-radius: 50% 50% 50% 2px; background: var(--sun); transform: rotate(-45deg); }
-        .perspective.risk .perspective-dot { background: var(--clay); }
-        .perspective.balance .perspective-dot { background: var(--fern); }
-        .perspective h3 { margin: 0; font-size: 12px; font-weight: 600; font-family: "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
-        .perspective p { margin: 0; color: var(--ink-soft); font-size: 13px; line-height: 1.58; }
-        .perspective.balance p { color: var(--ink); font-family: "Playfair Display", Georgia, serif; font-size: 16px; line-height: 1.43; }
+        /* Interactive 3D Flip Cards with Aura Glow & Fading Transitions */
+        .tarot-cards-grid { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 20px; perspective: 1200px; }
+        @media(min-width: 600px) { .tarot-cards-grid { grid-template-columns: repeat(3, 1fr); } }
+        
+        .flip-card { background-color: transparent; height: 230px; border-radius: 20px; cursor: pointer; perspective: 1200px; transform: translateY(20px); opacity: 0; animation: dealCard 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .flip-card:nth-child(1) { animation-delay: 0.1s; }
+        .flip-card:nth-child(2) { animation-delay: 0.22s; }
+        .flip-card:nth-child(3) { animation-delay: 0.34s; }
+        
+        @keyframes dealCard { to { transform: translateY(0); opacity: 1; } }
 
-        .verdict-foot { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 15px; color: var(--ink-soft); font-size: 11px; font-family: "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1); transform-style: preserve-3d; border-radius: 20px; box-shadow: 0 14px 35px rgba(0,0,0,0.08), 0 0 20px var(--card-glow); }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg) scale(1.02); }
+        
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; border: 1px solid var(--line); padding: 24px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; backdrop-filter: blur(14px); transition: background 0.4s ease; }
+        
+        .flip-card-front { background: rgba(255, 255, 255, 0.7); color: var(--ink); }
+        .flip-card-front:hover { background: rgba(255, 255, 255, 0.88); border-color: var(--fern); }
+        .flip-card-front h3 { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fern-deep); margin: 0 0 10px 0; }
+        .flip-card-front p { font-size: 11px; color: var(--ink-soft); font-family: "DM Mono", monospace; margin: 0; opacity: 0.8; }
+        
+        .flip-card-back { background: rgba(255, 255, 255, 0.94); color: var(--ink); transform: rotateY(180deg); text-align: left; justify-content: flex-start; align-items: flex-start; overflow-y: auto; }
+        .flip-card-back h4 { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clay); margin: 0 0 8px 0; }
+        .flip-card-back p { font-size: 12px; line-height: 1.5; color: var(--ink); margin: 0; font-family: "DM Sans", sans-serif; animation: fadeInText 0.4s ease; }
+        @keyframes fadeInText { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+        .verdict-foot { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 20px; color: var(--ink-soft); font-size: 11px; font-family: "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
         .save-button { display: inline-flex; align-items: center; gap: 5px; padding: 0; color: var(--fern); background: transparent; border: 0; font-size: 11px; font-family: "DM Mono", monospace; cursor: pointer; }
         .save-button:hover { color: var(--clay); }
 
@@ -202,8 +225,7 @@
             .composer { padding: 19px 17px 16px; }
             .composer-footer, .verdict-foot { align-items: flex-start; flex-direction: column; gap: 9px; }
             .verdict-top { display: block; }
-            .perspectives { grid-template-columns: 1fr; }
-            .perspective.balance { grid-column: auto; }
+            .tarot-cards-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -355,6 +377,12 @@
 
         const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]));
 
+        function triggerHaptic(pattern = 15) {
+            if (window.navigator && typeof window.navigator.vibrate === 'function') {
+                window.navigator.vibrate(pattern);
+            }
+        }
+
         function showToast(message) {
             toast.textContent = message; toast.hidden = false;
             clearTimeout(toastTimer); toastTimer = setTimeout(() => { toast.hidden = true; }, 2600);
@@ -363,13 +391,14 @@
         lensTrack.addEventListener('change', (e) => {
             currentSelectedLens = e.target.value;
             document.body.setAttribute('data-theme', currentSelectedLens);
+            triggerHaptic([20, 30, 20]);
         });
-                </script>
-                    <script>
+            <script>
         function playVoiceSynthesis() {
             if (window.speechSynthesis.speaking) { window.speechSynthesis.cancel(); return; }
             if (!currentVerdict || !currentLensData) return;
             
+            triggerHaptic(15);
             const btn = document.getElementById('speakBoardBtn');
             if (btn) btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg> Stop Audio`;
 
@@ -398,7 +427,7 @@
             }
         }
 
-        function emptyVerdict(message = 'When you are ready, speak or write a little more and will begin.') {
+        function emptyVerdict(message = 'When you are ready, speak or write a little more and we will begin.') {
             verdictBoard.innerHTML = `<div class="verdict-top"><div><h2>We&apos;ll look from three sides.</h2><p>${escapeHtml(message)}</p></div><span class="verdict-state">waiting</span></div>`;
             chatSection.style.display = 'none';
         }
@@ -413,27 +442,58 @@
                 <div class="verdict-top">
                     <div>
                         <h2>Structural translation</h2>
-                        <p>Here is what becomes visible when we map your scenario to the physics of ${escapeHtml(lens.name)}.</p>
-                        <button class="speak-btn" id="speakBoardBtn" type="button" style="margin-top: 10px;">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
-                            Read Aloud
-                        </button>
+                        <p>Tap any card below to flip it over and examine the perspective through ${escapeHtml(lens.name)}.</p>
                     </div>
+                    <button class="speak-btn" id="speakBoardBtn" type="button">Read Aloud</button>
                 </div>
-                <div class="perspectives">
-                    <article class="perspective"><div class="perspective-head"><span class="perspective-dot" aria-hidden="true"></span><h3>${escapeHtml(lens.a1.title)}</h3></div><p>${escapeHtml(a1)}</p></article>
-                    <article class="perspective risk"><div class="perspective-head"><span class="perspective-dot" aria-hidden="true"></span><h3>${escapeHtml(lens.a2.title)}</h3></div><p>${escapeHtml(a2)}</p></article>
-                    <article class="perspective balance"><div class="perspective-head"><span class="perspective-dot" aria-hidden="true"></span><h3>${escapeHtml(lens.a3.title)}</h3></div><p>${escapeHtml(a3)}</p></article>
+                <div class="tarot-cards-grid">
+                    <div class="flip-card" onclick="this.classList.toggle('flipped'); triggerHaptic([15, 10]);">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h3>Card I</h3>
+                                <p>${escapeHtml(lens.a1.title)}</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <h4>${escapeHtml(lens.a1.title)}</h4>
+                                <p>${escapeHtml(a1)}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card" onclick="this.classList.toggle('flipped'); triggerHaptic([15, 10]);">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h3>Card II</h3>
+                                <p>${escapeHtml(lens.a2.title)}</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <h4>${escapeHtml(lens.a2.title)}</h4>
+                                <p>${escapeHtml(a2)}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card" onclick="this.classList.toggle('flipped'); triggerHaptic([15, 10]);">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h3>Card III</h3>
+                                <p>${escapeHtml(lens.a3.title)}</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <h4>${escapeHtml(lens.a3.title)}</h4>
+                                <p>${escapeHtml(a3)}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="verdict-foot">
                     <span>Keep the useful part. Leave the rest.</span>
-                    <button class="save-button" type="button" id="saveBtn">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16Z"/></svg> keep this reflection
-                    </button>
+                    <button class="save-button" type="button" id="saveBtn">keep this reflection</button>
                 </div>`;
             
             document.getElementById('speakBoardBtn').addEventListener('click', playVoiceSynthesis);
-            document.getElementById('saveBtn').addEventListener('click', saveReflection);
+            document.getElementById('saveBtn').addEventListener('click', () => {
+                triggerHaptic(25);
+                saveReflection();
+            });
             chatSection.style.display = 'block'; chatHistoryBox.innerHTML = ''; 
         }
 
@@ -441,6 +501,7 @@
             const idea = rawIdea.trim();
             if (!idea) { showToast('Write or speak an idea first.'); return; }
             
+            triggerHaptic([30, 50, 30]);
             const activeLens = MATRIX[currentSelectedLens] || MATRIX["default"];
             isListening = false; window.speechSynthesis.cancel(); 
             voiceStatus.textContent = `Applying ${activeLens.name}…`;
@@ -450,7 +511,7 @@
             try {
                 const systemPrompt = `${activeLens.system}\nThe user's real-world scenario/plan is: "${idea}"\n\nRespond ONLY in valid JSON format with three exact keys: "angle1", "angle2", and "angle3". Keep answers highly insightful, pragmatic, and under 3 sentences each.\n\n{\n  "angle1": "${activeLens.a1.prompt}",\n  "angle2": "${activeLens.a2.prompt}",\n  "angle3": "${activeLens.a3.prompt}"\n}`;
 
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${API_KEY}`, {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/gemini-3.6-flash:generateContent?key=${API_KEY}`, {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: systemPrompt }] }] })
                 });
@@ -465,6 +526,7 @@
                     { role: "user", parts: [{ text: `My scenario is: ${idea}` }] },
                     { role: "model", parts: [{ text: `Here is my structural analysis using ${activeLens.name}:\n${activeLens.a1.title}: ${result.angle1}\n${activeLens.a2.title}: ${result.angle2}\n${activeLens.a3.title}: ${result.angle3}` }] }
                 ];
+                triggerHaptic([40, 20, 40]);
                 renderVerdict(result, activeLens);
                 voiceStatus.textContent = 'A little more room'; voiceHint.textContent = 'Keep the useful part. Leave the rest.';
             } catch (error) {
@@ -476,6 +538,7 @@
         function startListening() {
             if (!recognition || isListening) return;
             window.speechSynthesis.cancel();
+            triggerHaptic(20);
             recognition.start(); isListening = true;
             voiceStatus.textContent = 'Listening gently'; voiceHint.textContent = 'Let the first version be messy.';
             setThinking(true);
@@ -501,20 +564,22 @@
 
         async function sendFollowUp() {
             const msg = chatInput.value.trim(); if(!msg) return;
+            triggerHaptic(12);
             appendChatMessage('You', msg); chatInput.value = '';
             document.getElementById('chatSendBtn').disabled = true; document.getElementById('chatLabel').textContent = 'reflecting...';
             document.getElementById('chatStatus').textContent = 'Advocate is considering your follow-up...';
             conversationHistory.push({ role: "user", parts: [{ text: msg }] });
             const activeLens = currentLensData || MATRIX["default"];
 
-            try { 
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${API_KEY}`, {
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/gemini-3.6-flash:generateContent?key=${API_KEY}`, {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: conversationHistory, systemInstruction: { parts: [{ text: `You are the Advocate app. You analyzed the user's situation using ${activeLens.name}. ${activeLens.system} Discuss the findings, stay rigidly in character for this specific discipline.` }] } })
                 });
                 const data = await response.json(); if (data.error) throw new Error(data.error.message);
                 const reply = data.candidates[0].content.parts[0].text;
                 conversationHistory.push({ role: "model", parts: [{ text: reply }] });
+                triggerHaptic(20);
                 appendChatMessage('Advocate Board', reply);
                 document.getElementById('chatStatus').textContent = 'The board is ready to listen.';
             } catch (error) {
@@ -535,6 +600,7 @@
         }
 
         function openDrawer(kind) {
+            triggerHaptic(15);
             drawerLayer.innerHTML = ''; const drawer = document.createElement('aside'); drawer.className = 'drawer';
             if (kind === 'history') {
                 const history = getHistory();
@@ -546,6 +612,7 @@
                         const lensName = item.lens ? item.lens.name : "Strategy";
                         btn.innerHTML = `<span>${new Date(item.savedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })} · ${lensName}</span><p>${escapeHtml(item.idea)}</p>`;
                         btn.addEventListener('click', () => {
+                            triggerHaptic(10);
                             ideaInput.value = item.idea;
                             const targetLens = item.lens || MATRIX["default"];
                             lensTrack.value = Object.keys(MATRIX).find(key => MATRIX[key].name === targetLens.name) || "default";
@@ -565,25 +632,46 @@
                     <div class="history-item"><span>Medical Triage</span><p>Treats your anxiety like a bleeding wound. Finds the immediate tourniquet.</p></div>
                     <div class="drawer-footer">You stay in charge. The verdict is a mirror, not an instruction.</div>`;
             }
-            drawer.querySelector('.drawer-close').addEventListener('click', closeDrawer);
+            drawer.querySelector('.drawer-close').addEventListener('click', () => {
+                triggerHaptic(10);
+                closeDrawer();
+            });
             drawerLayer.appendChild(drawer); drawerLayer.hidden = false; 
         }
 
         function closeDrawer() { drawerLayer.hidden = true; }
 
-        thinkBtn.addEventListener('click', () => { if (ideaInput.value.trim()) debateIdea(ideaInput.value); else if (recognition) startListening(); else ideaInput.focus(); });
+        thinkBtn.addEventListener('click', () => { 
+            triggerHaptic(20);
+            if (ideaInput.value.trim()) debateIdea(ideaInput.value); 
+            else if (recognition) startListening(); 
+            else ideaInput.focus(); 
+        });
+        
         document.getElementById('chatSendBtn').addEventListener('click', sendFollowUp);
+        
         document.getElementById('newReflectionBtn').addEventListener('click', () => {
+            triggerHaptic(18);
             window.speechSynthesis.cancel();
             ideaInput.value = ''; document.getElementById('chatInput').value = ''; conversationHistory = []; currentVerdict = null;
             emptyVerdict(); voiceStatus.textContent = 'Prefer to speak?'; voiceHint.textContent = 'Tap the button above and let the first version be messy.';
         });
+        
         document.getElementById('historyBtn').addEventListener('click', () => openDrawer('history'));
         document.getElementById('helpBtn').addEventListener('click', () => openDrawer('help'));
-        drawerLayer.addEventListener('click', (e) => { if (e.target === drawerLayer) closeDrawer(); });
+        
+        drawerLayer.addEventListener('click', (e) => { 
+            if (e.target === drawerLayer) {
+                triggerHaptic(10);
+                closeDrawer();
+            } 
+        });
+        
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
 
         emptyVerdict();
     </script>
 </body>
 </html>
+</script>
+                                                                                                                                                                
