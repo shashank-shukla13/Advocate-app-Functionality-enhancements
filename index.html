@@ -394,8 +394,19 @@
             triggerHaptic([20, 30, 20]);
         });
             </script>
-                    <script>
-        function playVoiceSynthesis() {
+                        <!-- Include the official Google Gen AI SDK -->
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.run/@google/genai"
+        }
+      }
+    </script>
+    <script type="module">
+        import { GoogleGenAI } from "@google/genai";
+        const ai = new GoogleGenAI({ apiKey: API_KEY });
+
+        window.playVoiceSynthesis = function() {
             if (window.speechSynthesis.speaking) { window.speechSynthesis.cancel(); return; }
             if (!currentVerdict || !currentLensData) return;
             
@@ -413,7 +424,7 @@
             utterance.lang = 'en-IN'; utterance.rate = 0.95; 
             utterance.onend = () => { if (btn) btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg> Read Aloud`; };
             window.speechSynthesis.speak(utterance);
-        }
+        };
 
         function setThinking(thinking) {
             thinkBtn.disabled = thinking;
@@ -445,7 +456,7 @@
                         <h2>Structural translation</h2>
                         <p>Tap any card below to flip it over and examine the perspective through ${escapeHtml(lens.name)}.</p>
                     </div>
-                    <button class="speak-btn" id="speakBoardBtn" type="button">Read Aloud</button>
+                    <button class="speak-btn" id="speakBoardBtn" type="button" onclick="playVoiceSynthesis()">Read Aloud</button>
                 </div>
                 <div class="tarot-cards-grid">
                     <div class="flip-card" onclick="this.classList.toggle('flipped'); triggerHaptic([15, 10]);">
@@ -490,7 +501,6 @@
                     <button class="save-button" type="button" id="saveBtn">keep this reflection</button>
                 </div>`;
             
-            document.getElementById('speakBoardBtn').addEventListener('click', playVoiceSynthesis);
             document.getElementById('saveBtn').addEventListener('click', () => {
                 triggerHaptic(25);
                 saveReflection();
@@ -512,17 +522,12 @@
             try {
                 const systemPrompt = `${activeLens.system}\nThe user's real-world scenario/plan is: "${idea}"\n\nRespond ONLY in valid JSON format with three exact keys: "angle1", "angle2", and "angle3". Keep answers highly insightful, pragmatic, and under 3 sentences each.\n\n{\n  "angle1": "${activeLens.a1.prompt}",\n  "angle2": "${activeLens.a2.prompt}",\n  "angle3": "${activeLens.a3.prompt}"\n}`;
 
-                // Wrapped with CORS proxy to bypass browser restrictions on GitHub Pages
-                const targetUrl = `https://generativelanguage.googleapis.com/v1beta/gemini-3.6-flash:generateContent?key=${API_KEY}`;
-                const response = await fetch(`https://corsproxy.io/?url=` + encodeURIComponent(targetUrl), {
-                    method: 'POST', headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: systemPrompt }] }] })
+                const response = await ai.models.generateContent({
+                    model: 'gemini-3.6-flash',
+                    contents: systemPrompt
                 });
 
-                const data = await response.json();
-                if (data.error) throw new Error(data.error.message);
-
-                let rawText = data.candidates[0].content.parts[0].text.replace(/```json/g, '').replace(/```/g, '').trim();
+                let rawText = response.text.replace(/```json/g, '').replace(/```/g, '').trim();
                 const result = JSON.parse(rawText);
                 
                 conversationHistory = [
@@ -575,13 +580,20 @@
             const activeLens = currentLensData || MATRIX["default"];
 
             try {
-                const targetUrl = `https://generativelanguage.googleapis.com/v1beta/gemini-3.6-flash:generateContent?key=${API_KEY}`;
-                const response = await fetch(`https://corsproxy.io/?url=` + encodeURIComponent(targetUrl), {
-                    method: 'POST', headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: conversationHistory, systemInstruction: { parts: [{ text: `You are the Advocate app. You analyzed the user's situation using ${activeLens.name}. ${activeLens.system} Discuss the findings, stay rigidly in character for this specific discipline.` }] } })
+                const chatHistoryForSDK = conversationHistory.map(c => ({
+                    role: c.role === 'model' ? 'model' : 'user',
+                    parts: c.parts
+                }));
+
+                const response = await ai.models.generateContent({
+                    model: 'gemini-3.6-flash',
+                    contents: chatHistoryForSDK,
+                    config: {
+                        systemInstruction: `You are the Advocate app. You analyzed the user's situation using ${activeLens.name}. ${activeLens.system} Discuss the findings, stay rigidly in character for this specific discipline.`
+                    }
                 });
-                const data = await response.json(); if (data.error) throw new Error(data.error.message);
-                const reply = data.candidates[0].content.parts[0].text;
+
+                const reply = response.text;
                 conversationHistory.push({ role: "model", parts: [{ text: reply }] });
                 triggerHaptic(20);
                 appendChatMessage('Advocate Board', reply);
@@ -662,8 +674,6 @@
         });
         
         document.getElementById('historyBtn').addEventListener('click', () => openDrawer('history'));
-        document.getElementById('helpBtn').addEventListener('click', () => openDrawer('help'));
-        
         drawerLayer.addEventListener('click', (e) => { 
             if (e.target === drawerLayer) {
                 triggerHaptic(10);
@@ -677,4 +687,3 @@
     </script>
 </body>
 </html>
-
