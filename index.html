@@ -281,7 +281,6 @@
                     <div class="stage-label">
                         <h2>Select Analytical Lens</h2>
                     </div>
-                    
                                 <div class="lens-dropdown-container" id="lensDropdownContainer">
                 <button type="button" class="lens-select-glass" id="lensDropdownBtn" aria-expanded="false">
                     <span id="currentLensLabel">SECOND-ORDER STRATEGY</span>
@@ -291,6 +290,7 @@
                     <!-- Options populated dynamically -->
                 </div>
                                 </div>
+            
                     
                     </div>
 
@@ -390,9 +390,11 @@
             clearTimeout(toastTimer); toastTimer = setTimeout(() => { toast.hidden = true; }, 2600);
         }
 
-                const lensDropdownBtn = document.getElementById('lensDropdownBtn');
+                       const lensDropdownBtn = document.getElementById('lensDropdownBtn');
         const customLensMenu = document.getElementById('customLensMenu');
         const currentLensLabel = document.getElementById('currentLensLabel');
+
+        customLensMenu.innerHTML = ''; // Clears any duplicate renders
 
         Object.keys(MATRIX).forEach(key => {
             const lens = MATRIX[key];
@@ -415,6 +417,7 @@
             });
             customLensMenu.appendChild(optBtn);
         });
+            
 
         lensDropdownBtn.addEventListener('click', (e) => {
             e.stopPropagation();
