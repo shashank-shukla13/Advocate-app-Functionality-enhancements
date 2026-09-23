@@ -288,7 +288,7 @@
                     <span id="currentLensLabel">SECOND-ORDER STRATEGY</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </button>
-                <div class="custom-lens-menu" id="customLensMenu" hidden style="display: none;">
+                <div class="custom-lens-menu" id="customLensMenu" style="display: none;">
                     
                     <!-- Options populated dynamically -->
                 </div>
@@ -409,7 +409,7 @@
                 currentSelectedLens = key;
                 currentLensLabel.textContent = lens.name;
                 document.body.setAttribute('data-theme', key);
-                                customLensMenu.hidden = true;
+                                                customLensMenu.removeAttribute('hidden');
                 customLensMenu.style.display = 'none';
                 lensDropdownBtn.setAttribute('aria-expanded', 'false');
                 
@@ -420,25 +420,20 @@
             });
             customLensMenu.appendChild(optBtn);
         });
-            
-
-                lensDropdownBtn.addEventListener('click', (e) => {
+                    lensDropdownBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             triggerHaptic(10);
-            const isHidden = customLensMenu.hidden;
-            customLensMenu.hidden = !isHidden;
-            customLensMenu.style.display = customLensMenu.hidden ? 'none' : 'flex';
-            lensDropdownBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+            const isClosed = customLensMenu.style.display === 'none' || customLensMenu.style.display === '';
+            customLensMenu.style.display = isClosed ? 'flex' : 'none';
+            lensDropdownBtn.setAttribute('aria-expanded', isClosed ? 'true' : 'false');
         });
-                    document.addEventListener('click', (e) => {
+
+        document.addEventListener('click', (e) => {
             if (!document.getElementById('lensDropdownContainer').contains(e.target)) {
-                customLensMenu.hidden = true;
                 customLensMenu.style.display = 'none';
                 lensDropdownBtn.setAttribute('aria-expanded', 'false');
             }
         });
-            
-            
                 </script>
                     <script>
         function playVoiceSynthesis() {
