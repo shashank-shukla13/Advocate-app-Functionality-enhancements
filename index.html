@@ -121,7 +121,8 @@
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), 0 0 25px var(--card-glow);
             padding: 8px; z-index: 20; display: flex; flex-direction: column; gap: 6px;
             animation: fadeInMenu 0.2s ease;
-                    .custom-lens-menu[hidden] { display: none !important; }
+                            .custom-lens-menu { display: none; }
+        .custom-lens-menu.is-open { display: flex !important; }
             
         }
         @keyframes fadeInMenu { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
@@ -283,16 +284,16 @@
                     <div class="stage-label">
                         <h2>Select Analytical Lens</h2>
                     </div>
-                                            <div class="lens-dropdown-container" id="lensDropdownContainer">
+                                 <div class="lens-dropdown-container" id="lensDropdownContainer">
                 <button type="button" class="lens-select-glass" id="lensDropdownBtn" aria-expanded="false">
                     <span id="currentLensLabel">SECOND-ORDER STRATEGY</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </button>
-                <div class="custom-lens-menu" id="customLensMenu" style="display: none;">
-                    
+                <div class="custom-lens-menu" id="customLensMenu">
                     <!-- Options populated dynamically -->
                 </div>
-                                            </div>
+                                 </div>
+                                            
                     
                     </div>
 
@@ -391,12 +392,11 @@
             toast.textContent = message; toast.hidden = false;
             clearTimeout(toastTimer); toastTimer = setTimeout(() => { toast.hidden = true; }, 2600);
         }
-
-                       const lensDropdownBtn = document.getElementById('lensDropdownBtn');
+                    const lensDropdownBtn = document.getElementById('lensDropdownBtn');
         const customLensMenu = document.getElementById('customLensMenu');
         const currentLensLabel = document.getElementById('currentLensLabel');
 
-        customLensMenu.innerHTML = ''; // Clears any duplicate renders
+        customLensMenu.innerHTML = '';
 
         Object.keys(MATRIX).forEach(key => {
             const lens = MATRIX[key];
@@ -409,8 +409,7 @@
                 currentSelectedLens = key;
                 currentLensLabel.textContent = lens.name;
                 document.body.setAttribute('data-theme', key);
-                                                customLensMenu.removeAttribute('hidden');
-                customLensMenu.style.display = 'none';
+                customLensMenu.classList.remove('is-open');
                 lensDropdownBtn.setAttribute('aria-expanded', 'false');
                 
                 customLensMenu.querySelectorAll('.custom-lens-option').forEach(el => el.classList.remove('active'));
@@ -420,19 +419,21 @@
             });
             customLensMenu.appendChild(optBtn);
         });
-                            lensDropdownBtn.addEventListener('click', (e) => {
+
+        lensDropdownBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             triggerHaptic(10);
-            const isClosed = customLensMenu.style.display === 'none' || customLensMenu.style.display === '';
-            customLensMenu.style.display = isClosed ? 'flex' : 'none';
-            lensDropdownBtn.setAttribute('aria-expanded', isClosed ? 'true' : 'false');
+            const isOpen = customLensMenu.classList.toggle('is-open');
+            lensDropdownBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
-                    document.addEventListener('click', (e) => {
+
+        document.addEventListener('click', (e) => {
             if (!document.getElementById('lensDropdownContainer').contains(e.target)) {
-                customLensMenu.style.display = 'none';
+                customLensMenu.classList.remove('is-open');
                 lensDropdownBtn.setAttribute('aria-expanded', 'false');
             }
         });
+                        
             
                 </script>
                     <script>
