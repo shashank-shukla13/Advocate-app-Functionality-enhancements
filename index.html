@@ -110,6 +110,39 @@
             padding-right: 48px;
         }
         .lens-select-glass:focus { border-color: var(--fern-deep); box-shadow: 0 0 0 4px var(--grad1); background-color: rgba(255, 255, 255, 0.85); }
+                /* Custom Frosted Glass Aurora Dropdown Menu */
+        .custom-lens-menu {
+            position: absolute; top: calc(100% + 8px); left: 0; width: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.6) 100%),
+                        radial-gradient(circle at top right, var(--grad1), transparent 70%);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), 0 0 25px var(--card-glow);
+            padding: 8px; z-index: 20; display: flex; flex-direction: column; gap: 6px;
+            animation: fadeInMenu 0.2s ease;
+        }
+        @keyframes fadeInMenu { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+        .custom-lens-option {
+            display: flex; align-items: center; justify-content: space-between;
+            width: 100%; padding: 12px 16px; border: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.3); border-radius: 14px;
+            color: var(--ink); font-family: "DM Mono", monospace; font-size: 11px;
+            font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+            cursor: pointer; text-align: left; transition: all 0.2s ease;
+        }
+        .custom-lens-option:hover {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: var(--fern);
+            transform: translateX(2px);
+        }
+        .custom-lens-option.active {
+            background: var(--fern-deep);
+            color: #fffaf0;
+            border-color: transparent;
+        }
+        
 
         .composer { position: relative; padding: 23px 24px 19px; border: 1px solid var(--line); border-radius: 22px 22px 42px 22px; background: rgba(255,255,255,.45); box-shadow: 0 18px 50px rgba(0,0,0,.04); backdrop-filter: blur(12px); }
         .composer::before { content: ""; position: absolute; top: -9px; right: 27px; width: 58px; height: 14px; border-top: 1px solid var(--clay); border-radius: 50%; transform: rotate(-4deg); opacity: 0.7; }
@@ -249,19 +282,16 @@
                         <h2>Select Analytical Lens</h2>
                     </div>
                     
-                    <div class="lens-dropdown-container">
-                        <select id="lensTrack" class="lens-select-glass">
-                            <option value="default">Second-Order Strategy</option>
-                            <option value="agile">Agile & Systems Architecture</option>
-                            <option value="market">Market & Equity Analysis</option>
-                            <option value="medical">Medical Triage Protocol</option>
-                            <option value="evolution">Evolutionary Biology</option>
-                            <option value="physics">Physics & Chemistry</option>
-                            <option value="military">Military Strategy</option>
-                            <option value="roast">🔥 Roast My Dilemma (Gen Z Brutal Check)</option>
-                            <option value="tarot">🔮 Vibe Check Tarot Oracle</option>
-                            <option value="delusion">💀 Delusion vs. Canon Event Calculator</option>
-                        </select>
+                                <div class="lens-dropdown-container" id="lensDropdownContainer">
+                <button type="button" class="lens-select-glass" id="lensDropdownBtn" aria-expanded="false">
+                    <span id="currentLensLabel">SECOND-ORDER STRATEGY</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="custom-lens-menu" id="customLensMenu" hidden>
+                    <!-- Options populated dynamically -->
+                </div>
+                                </div>
+                    
                     </div>
 
                     <div class="composer">
@@ -360,10 +390,47 @@
             clearTimeout(toastTimer); toastTimer = setTimeout(() => { toast.hidden = true; }, 2600);
         }
 
-        lensTrack.addEventListener('change', (e) => {
-            currentSelectedLens = e.target.value;
-            document.body.setAttribute('data-theme', currentSelectedLens);
+                const lensDropdownBtn = document.getElementById('lensDropdownBtn');
+        const customLensMenu = document.getElementById('customLensMenu');
+        const currentLensLabel = document.getElementById('currentLensLabel');
+
+        Object.keys(MATRIX).forEach(key => {
+            const lens = MATRIX[key];
+            const optBtn = document.createElement('button');
+            optBtn.type = 'button';
+            optBtn.className = 'custom-lens-option' + (key === currentSelectedLens ? ' active' : '');
+            optBtn.innerHTML = `<span>${lens.name}</span>`;
+            optBtn.addEventListener('click', () => {
+                triggerHaptic(12);
+                currentSelectedLens = key;
+                currentLensLabel.textContent = lens.name;
+                document.body.setAttribute('data-theme', key);
+                customLensMenu.hidden = true;
+                lensDropdownBtn.setAttribute('aria-expanded', 'false');
+                
+                customLensMenu.querySelectorAll('.custom-lens-option').forEach(el => el.classList.remove('active'));
+                optBtn.classList.add('active');
+                
+                if (currentVerdict) debateIdea(ideaInput.value);
+            });
+            customLensMenu.appendChild(optBtn);
         });
+
+        lensDropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            triggerHaptic(10);
+            const isHidden = customLensMenu.hidden;
+            customLensMenu.hidden = !isHidden;
+            lensDropdownBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!document.getElementById('lensDropdownContainer').contains(e.target)) {
+                customLensMenu.hidden = true;
+                lensDropdownBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+            
                 </script>
                     <script>
         function playVoiceSynthesis() {
