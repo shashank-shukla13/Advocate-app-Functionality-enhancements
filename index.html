@@ -420,20 +420,20 @@
             });
             customLensMenu.appendChild(optBtn);
         });
-                    lensDropdownBtn.addEventListener('click', (e) => {
+                            lensDropdownBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             triggerHaptic(10);
             const isClosed = customLensMenu.style.display === 'none' || customLensMenu.style.display === '';
             customLensMenu.style.display = isClosed ? 'flex' : 'none';
             lensDropdownBtn.setAttribute('aria-expanded', isClosed ? 'true' : 'false');
         });
-
-        document.addEventListener('click', (e) => {
+                    document.addEventListener('click', (e) => {
             if (!document.getElementById('lensDropdownContainer').contains(e.target)) {
                 customLensMenu.style.display = 'none';
                 lensDropdownBtn.setAttribute('aria-expanded', 'false');
             }
         });
+            
                 </script>
                     <script>
         function playVoiceSynthesis() {
