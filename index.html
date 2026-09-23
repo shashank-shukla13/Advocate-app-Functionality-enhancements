@@ -409,7 +409,8 @@
                 currentSelectedLens = key;
                 currentLensLabel.textContent = lens.name;
                 document.body.setAttribute('data-theme', key);
-                customLensMenu.hidden = true;
+                                customLensMenu.hidden = true;
+                customLensMenu.style.display = 'none';
                 lensDropdownBtn.setAttribute('aria-expanded', 'false');
                 
                 customLensMenu.querySelectorAll('.custom-lens-option').forEach(el => el.classList.remove('active'));
@@ -421,20 +422,22 @@
         });
             
 
-        lensDropdownBtn.addEventListener('click', (e) => {
+                lensDropdownBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             triggerHaptic(10);
             const isHidden = customLensMenu.hidden;
             customLensMenu.hidden = !isHidden;
+            customLensMenu.style.display = customLensMenu.hidden ? 'none' : 'flex';
             lensDropdownBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
         });
-
-        document.addEventListener('click', (e) => {
+                    document.addEventListener('click', (e) => {
             if (!document.getElementById('lensDropdownContainer').contains(e.target)) {
                 customLensMenu.hidden = true;
+                customLensMenu.style.display = 'none';
                 lensDropdownBtn.setAttribute('aria-expanded', 'false');
             }
         });
+            
             
                 </script>
                     <script>
