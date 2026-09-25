@@ -17,90 +17,361 @@
             --line: rgba(26, 26, 26, 0.1);
         }
 
-        [data-theme="systems"] { --fern: #2c4c5e; --fern-deep: #1b313d; --grad1: rgba(44, 76, 94, 0.15); --card-glow: rgba(44, 76, 94, 0.08); }
-        [data-theme="market"] { --fern: #5e4c2c; --fern-deep: #3d311b; --grad1: rgba(94, 76, 44, 0.15); --card-glow: rgba(94, 76, 44, 0.08); }
-        [data-theme="medical"] { --fern: #5e2c2c; --fern-deep: #3d1b1b; --grad1: rgba(94, 44, 44, 0.15); --card-glow: rgba(94, 44, 44, 0.08); }
-        [data-theme="evolutionary"] { --fern: #4c5e2c; --fern-deep: #313d1b; --grad1: rgba(76, 94, 44, 0.15); --card-glow: rgba(76, 94, 44, 0.08); }
-        [data-theme="physics"] { --fern: #4c2c5e; --fern-deep: #311b3d; --grad1: rgba(76, 44, 94, 0.15); --card-glow: rgba(76, 44, 94, 0.08); }
-        [data-theme="military"] { --fern: #5e442c; --fern-deep: #3d2b1b; --grad1: rgba(94, 68, 44, 0.15); --card-glow: rgba(94, 68, 44, 0.08); }
-        [data-theme="roast"] { --fern: #5e2c44; --fern-deep: #3d1b2b; --grad1: rgba(94, 44, 68, 0.15); --card-glow: rgba(94, 44, 68, 0.08); }
-        [data-theme="vibe"] { --fern: #2c5e58; --fern-deep: #1b3d38; --grad1: rgba(44, 94, 88, 0.15); --card-glow: rgba(44, 94, 88, 0.08); }
-        [data-theme="delusion"] { --fern: #5a2c5e; --fern-deep: #391b3d; --grad1: rgba(90, 44, 94, 0.15); --card-glow: rgba(90, 44, 94, 0.08); }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--bg); color: var(--ink); font-family: "Playfair Display", Georgia, serif; transition: background 0.4s ease; }
-        
-        .main { max-width: 430px; margin: 0 auto; padding: 24px 20px 60px 20px; }
-        .kicker { font-family: "DM Mono", monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fern); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-        .kicker::before { content: ""; width: 16px; height: 1px; background: var(--fern); }
-        
-        .intro { font-size: 28px; line-height: 1.25; margin-bottom: 24px; color: var(--ink); }
-        .intro span { color: var(--fern); font-style: italic; }
-
-        .stage-label { margin-bottom: 14px; }
-        .stage-label h2 { margin: 0 0 10px 0; font-size: 13px; font-weight: 500; font-family: "DM Mono", monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); }
-
-        .lens-dropdown-container { margin-bottom: 22px; position: relative; }
-        
-        .lens-select-glass {
-            width: 100%; padding: 15px 22px; border: 2px solid var(--fern);
-            border-radius: 999px; background: rgba(255, 255, 255, 0.65);
-            color: var(--fern-deep); font-family: "DM Mono", monospace;
-            font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-            outline: none; cursor: pointer; backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px); box-shadow: 0 6px 24px rgba(0,0,0,0.06);
-            display: flex; align-items: center; justify-content: space-between;
-            appearance: none; -webkit-appearance: none; -moz-appearance: none;
-            background-image: none;
+        [data-theme="systems"] {
+            --fern: #2c4c5e;
+            --fern-deep: #1b313d;
+            --grad1: rgba(44, 76, 94, 0.15);
+            --card-glow: rgba(44, 76, 94, 0.08);
         }
-        .lens-select-glass:focus { border-color: var(--fern-deep); box-shadow: 0 0 4px var(--grad1); background-color: rgba(255,255,255,0.85); }
 
-        /* Custom Frosted Glass Aurora Dropdown Menu */
-        .custom-lens-menu {
-            position: absolute; top: calc(100% + 8px); left: 0; width: 100%;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.6) 100%),
-                        radial-gradient(circle at top right, var(--grad1), transparent 70%);
-            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 20px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), 0 0 25px var(--card-glow);
-            padding: 8px; z-index: 20; display: none; flex-direction: column; gap: 6px;
-            animation: fadeInMenu 0.2s ease;
+        [data-theme="market"] {
+            --fern: #5e4c2c;
+            --fern-deep: #3d311b;
+            --grad1: rgba(94, 76, 44, 0.15);
+            --card-glow: rgba(94, 76, 44, 0.08);
         }
-        .custom-lens-menu.is-open { display: flex !important; }
 
-        @keyframes fadeInMenu { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
-
-        .custom-lens-option {
-            display: flex; align-items: center; justify-content: space-between;
-            width: 100%; padding: 12px 16px; border: 1px solid transparent;
-            background: rgba(255, 255, 255, 0.3); border-radius: 14px;
-            color: var(--ink); font-family: "DM Mono", monospace; font-size: 11px;
-            font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-            cursor: pointer; text-align: left; transition: all 0.2s ease;
+        [data-theme="medical"] {
+            --fern: #5e2c2c;
+            --fern-deep: #3d1b1b;
+            --grad1: rgba(94, 44, 44, 0.15);
+            --card-glow: rgba(94, 44, 44, 0.08);
         }
-        .custom-lens-option:hover { background: rgba(255, 255, 255, 0.8); border-color: var(--fern); transform: translateX(2px); }
-        .custom-lens-option.active { background: var(--fern-deep); color: #fffaf0; border-color: transparent; }
 
-        .verdict-card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); border: 1px solid var(--line); border-radius: 20px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 16px; transition: transform 0.3s ease; }
-        .verdict-card:hover { transform: translateY(-2px); }
+        [data-theme="evolutionary"] {
+            --fern: #4c5e2c;
+            --fern-deep: #313d1b;
+            --grad1: rgba(76, 94, 44, 0.15);
+            --card-glow: rgba(76, 94, 44, 0.08);
+        }
 
-        .card-flip { perspective: 1000px; cursor: pointer; }
-        .card-inner { transition: transform 0.6s; transform-style: preserve-3d; position: relative; width: 100%; min-height: 140px; }
-        .card-inner.flipped { transform: rotateY(180deg); }
-        .card-front, .card-back { backface-visibility: hidden; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .card-back { transform: rotateY(180deg); }
+        [data-theme="physics"] {
+            --fern: #4c2c5e;
+            --fern-deep: #311b3d;
+            --grad1: rgba(76, 44, 94, 0.15);
+            --card-glow: rgba(76, 44, 94, 0.08);
+        }
+
+        [data-theme="military"] {
+            --fern: #5e442c;
+            --fern-deep: #3d2b1b;
+            --grad1: rgba(94, 68, 44, 0.15);
+            --card-glow: rgba(94, 68, 44, 0.08);
+        }
+
+        [data-theme="roast"] {
+            --fern: #5e2c44;
+            --fern-deep: #3d1b2b;
+            --grad1: rgba(94, 44, 68, 0.15);
+            --card-glow: rgba(94, 44, 68, 0.08);
+        }
+
+        [data-theme="vibe"] {
+            --fern: #2c5e58;
+            --fern-deep: #1b3d38;
+            --grad1: rgba(44, 94, 88, 0.15);
+            --card-glow: rgba(44, 94, 88, 0.08);
+        }
+
+        [data-theme="delusion"] {
+            --fern: #5a2c5e;
+            --fern-deep: #391b3d;
+            --grad1: rgba(90, 44, 94, 0.15);
+            --card-glow: rgba(90, 44, 94, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            font-family: "Playfair Display", Georgia, serif;
+            transition: background 0.4s ease;
+        }
+        
+        .main {
+            max-width: 430px;
+            margin: 0 auto;
+            padding: 24px 20px 60px 20px;
+        }
+
+        .kicker {
+            font-family: "DM Mono", monospace;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--fern);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .kicker::before {
+            content: "";
+            width: 16px;
+            height: 1px;
+            background: var(--fern);
+            transition: background 0.3s ease;
+        }
+        
+        .intro {
+            font-size: 28px;
+            line-height: 1.25;
+            margin-bottom: 24px;
+            color: var(--ink);
+        }
+
+        .intro span {
+            color: var(--fern);
+            font-style: italic;
+            transition: color 0.3s ease;
+        }
+
+        .stage-label {
+            margin-bottom: 14px;
+        }
+
+        .stage-label h2 {
+            margin: 0 0 10px 0;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: "DM Mono", monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-soft);
+        }
     </style>
 </head>
-<body>
+        .lens-dropdown-container {
+            margin-bottom: 22px;
+            position: relative;
+        }
+        
+        .lens-select-glass {
+            width: 100%;
+            padding: 15px 22px;
+            border: 2px solid var(--fern);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.65);
+            color: var(--fern-deep);
+            font-family: "DM Mono", monospace;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            outline: none;
+            cursor: pointer;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: none;
+            transition: all 0.3s ease;
+        }
+
+        .lens-select-glass:focus {
+            border-color: var(--fern-deep);
+            box-shadow: 0 0 8px var(--grad1);
+            background-color: rgba(255,255,255,0.85);
+        }
+
+        .custom-lens-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%),
+                        radial-gradient(circle at top right, var(--grad1), transparent 70%);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1.5px solid var(--fern);
+            border-radius: 20px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), 0 0 25px var(--card-glow);
+            padding: 10px;
+            z-index: 20;
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            animation: fadeInMenu 0.2s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .custom-lens-menu.is-open {
+            display: flex !important;
+        }
+
+        @keyframes fadeInMenu {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .custom-lens-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 14px;
+            color: var(--ink);
+            font-family: "DM Mono", monospace;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+
+        .custom-lens-option:hover {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--fern);
+            color: var(--fern-deep);
+            transform: translateX(2px);
+        }
+
+        .custom-lens-option.active {
+            background: var(--fern-deep);
+            color: #fffaf0;
+            border-color: transparent;
+            box-shadow: 0 4px 12px var(--grad1);
+        }
+
+        .verdict-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            margin-bottom: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .verdict-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .card-flip {
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+            width: 100%;
+            min-height: 140px;
+        }
+
+        .card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 24px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.7);
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        .card-back p {
+            font-size: 13px;
+            line-height: 1.55;
+            color: var(--ink);
+            font-family: "DM Mono", monospace;
+        }
+        
+        .primary-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--fern);
+            color: #fff;
+            border: none;
+            border-radius: 999px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .primary-button:hover {
+            background: var(--fern-deep);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+    <body>
     <header class="topbar" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--line);">
         <button id="newReflectionBtn" type="button" aria-label="Start a new Advocate reflection" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 3.2C13:7 12 6.1 5.3 4.2 12.6C..7 2.7 5.5 2.6 4.5 1.4 5.5 1.7 7.6..9 3.5-3.5 4.4-9.8 6 D4.3 19.1C3.4-4.6 3.2-7.5 11.6-9.6"/></svg>
-            <span class="brand-word" style="font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 600; text-transform: uppercase;">advocate <span style="color: var(--fern);">Order</span></span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--fern)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 0.3s ease;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span class="brand-word" style="font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink);">ADVOCATE <span style="color: var(--fern); transition: color 0.3s ease;">ORDER</span></span>
         </button>
         <div class="nav-actions" style="display: flex; gap: 12px;">
-            <button class="icon-button" id="historyBtn" type="button" aria-label="Reflection history" style="background: none; border: none; cursor: pointer;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
-            <button class="icon-button" id="helpBtn" type="button" aria-label="How Advocate works" style="background: none; border: none; cursor: pointer;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></button>
+            <button class="icon-button" id="historyBtn" type="button" aria-label="Reflection history" style="background: none; border: none; cursor: pointer; color: var(--ink);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
+            <button class="icon-button" id="helpBtn" type="button" aria-label="How Advocate works" style="background: none; border: none; cursor: pointer; color: var(--ink);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></button>
         </div>
     </header>
 
@@ -128,23 +399,38 @@
             <label class="field-label" style="display: block; margin-bottom: 11px; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft);">Your idea, in your own words</label>
             <textarea id="ideaInput" rows="3" placeholder="I keep thinking about..." style="width: 100%; border: none; background: transparent; font-family: 'Playfair Display', serif; font-size: 16px; color: var(--ink); outline: none; resize: vertical;"></textarea>
             <div class="composer-footer" style="display: flex; align-items: center; justify-content: space-between; margin-top: 14px;">
-                <button type="button" class="primary-button" id="thinkBtn" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; background: var(--fern); color: #fff; border: none; border-radius: 999px; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; cursor: pointer;">
+                <button type="button" class="primary-button" id="thinkBtn">
                     <span>Think it through</span>
                 </button>
             </div>
         </div>
 
         <div class="voice-bridge" style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
-            <button id="speakBoardBtn" type="button" style="background: none; border: 1px solid var(--line); border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button>
+            <button id="speakBoardBtn" type="button" style="background: none; border: 1px solid var(--line); border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--ink);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button>
             <span id="voiceStatus" style="font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-soft);">Tap to listen or speak your reflection</span>
         </div>
 
         <div id="verdictBoard" style="display: flex; flex-direction: column; gap: 16px;"></div>
     </main>
+        <div class="modal-overlay" id="historyModal">
+        <div class="modal-content">
+            <h3 style="font-family: 'DM Mono', monospace; font-size: 12px; text-transform: uppercase; margin-bottom: 16px; color: var(--fern);">Reflection History</h3>
+            <div id="historyList" style="display: flex; flex-direction: column; gap: 10px;"></div>
+            <button type="button" class="primary-button" id="closeHistory" style="margin-top: 20px; width: 100%; justify-content: center;">Close</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="helpModal">
+        <div class="modal-content">
+            <h3 style="font-family: 'DM Mono', monospace; font-size: 12px; text-transform: uppercase; margin-bottom: 16px; color: var(--fern);">About Advocate Order</h3>
+            <p style="font-size: 14px; line-height: 1.5; color: var(--ink); margin-bottom: 16px;">A cross-disciplinary analytical engine designed to stress-test your dilemmas through rigorous multi-angle lenses, supported by real-time AI synthesis and haptic feedback.</p>
+            <button type="button" class="primary-button" id="closeHelp" style="width: 100%; justify-content: center;">Got it</button>
+        </div>
+    </div>
 
     <script>
-        const KEY_PART_1 = "AIzaSyC7rJMVh49oXTAw24UeQd_orpRJY27xmXA";
-        const KEY_PART_2 = "YgzF7rJMVh49oXTAw24UeQd_orpRJY27xmXA";
+        const KEY_PART_1 = "AIzaSyC7rJMVh49oXTAw24UeQd";
+        const KEY_PART_2 = "_orpRJY27xmXA";
         const API_KEY = KEY_PART_1;
 
         const MATRIX = {
@@ -172,17 +458,40 @@
         function triggerHaptic(duration = 10) {
             if (navigator.vibrate) navigator.vibrate(duration);
         }
-
-        function debateIdea(text) {
+                async function debateIdea(text) {
             if (!text.trim()) return;
             currentVerdict = true;
             currentLensData = MATRIX[currentSelectedLens];
-            currentVerdictAngles = {
-                angle1: `Primary analysis via ${currentLensData.name}: evaluating core dynamics of "${text}".`,
-                angle2: `Secondary pressure test: scaling constraints and friction variables.`,
-                angle3: `The ultimate pivot: structural action plan for optimal resolution.`
-            };
+            
             const board = document.getElementById('verdictBoard');
+            board.innerHTML = `<div class="verdict-card"><p style="font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--fern);">Processing through ${escapeHtml(currentLensData.name)}...</p></div>`;
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{ text: `Analyze this dilemma through the lens of "${currentLensData.name}" (${currentLensData.desc}): "${text}". Provide 3 short structural angles format output cleanly.` }]
+                        }]
+                    })
+                });
+                const data = await response.json();
+                const outputText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Analysis complete.";
+                
+                currentVerdictAngles = {
+                    angle1: outputText.substring(0, 180),
+                    angle2: outputText.substring(180, 360) || "Secondary pressure test: evaluating trade-offs and scaling constraints.",
+                    angle3: "Structural action plan: execute 14-day validation split test."
+                };
+            } catch (err) {
+                currentVerdictAngles = {
+                    angle1: `Primary analysis via ${currentLensData.name}: evaluating core dynamics of "${text}".`,
+                    angle2: `Secondary pressure test: scaling constraints and friction variables.`,
+                    angle3: `The ultimate pivot: structural action plan for optimal resolution.`
+                };
+            }
+
             board.innerHTML = `
                 <div class="verdict-card card-flip" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
                     <div class="card-inner">
@@ -193,14 +502,19 @@
                         </div>
                         <div class="card-back">
                             <h3 style="font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--fern); margin-bottom: 8px;">Deeper Synthesis</h3>
-                            <p style="font-size: 14px; line-height: 1.5; color: var(--ink);">${escapeHtml(currentVerdictAngles.angle2)} ${escapeHtml(currentVerdictAngles.angle3)}</p>
+                            <p>${escapeHtml(currentVerdictAngles.angle2)} ${escapeHtml(currentVerdictAngles.angle3)}</p>
                         </div>
                     </div>
                 </div>
             `;
-        }
-
-        const lensDropdownBtn = document.getElementById('lensDropdownBtn');
+            
+            try {
+                const history = JSON.parse(localStorage.getItem('advocate_history') || '[]');
+                history.unshift({ text, lens: currentLensData.name, date: new Date().toISOString() });
+                localStorage.setItem('advocate_history', JSON.stringify(history.slice(0, 20)));
+            } catch (e) {}
+                }
+                const lensDropdownBtn = document.getElementById('lensDropdownBtn');
         const customLensMenu = document.getElementById('customLensMenu');
         const currentLensLabel = document.getElementById('currentLensLabel');
         const ideaInput = document.getElementById('ideaInput');
@@ -263,6 +577,25 @@
             document.getElementById('verdictBoard').innerHTML = '';
             currentVerdict = false;
         });
+
+        const historyModal = document.getElementById('historyModal');
+        const helpModal = document.getElementById('helpModal');
+
+        document.getElementById('historyBtn').addEventListener('click', () => {
+            triggerHaptic(8);
+            const list = document.getElementById('historyList');
+            try {
+                const history = JSON.parse(localStorage.getItem('advocate_history') || '[]');
+                list.innerHTML = history.length ? history.map(h => `<div style="padding: 10px; background: rgba(255,255,255,0.6); border-radius: 10px; font-size: 13px;"><strong style="color: var(--fern);">${escapeHtml(h.lens)}</strong>: ${escapeHtml(h.text)}</div>`).join('') : '<p style="font-size: 13px; color: var(--ink-soft);">No past reflections saved yet.</p>';
+            } catch(e) {
+                list.innerHTML = '<p style="font-size: 13px; color: var(--ink-soft);">Could not load history.</p>';
+            }
+            historyModal.style.display = 'flex';
+        });
+
+        document.getElementById('closeHistory').addEventListener('click', () => { historyModal.style.display = 'none'; });
+        document.getElementById('helpBtn').addEventListener('click', () => { triggerHaptic(8); helpModal.style.display = 'flex'; });
+        document.getElementById('closeHelp').addEventListener('click', () => { helpModal.style.display = 'none'; });
     </script>
 </body>
 </html>
